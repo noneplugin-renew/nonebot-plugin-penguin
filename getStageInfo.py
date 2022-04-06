@@ -4,8 +4,8 @@ import json
 import time
 from tinydb import TinyDB
 
-stagedb = TinyDB('./src/stageIdDB.json')
-#先全清空好了，后面再看情况改成逐条修改吧
+stagedb = TinyDB('./db/stageIdDB.json')
+# 先全清空好了，后面再看情况改成逐条修改吧
 stagedb.truncate()
 # 写入本次更新信息时的时间戳
 stagedb.insert({'updateTime': int(time.time())})

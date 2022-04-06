@@ -55,6 +55,9 @@ coverage.xml
 *.mo
 *.pot
 
+#tinydb db json
+db/
+
 # Django stuff:
 *.log
 local_settings.py

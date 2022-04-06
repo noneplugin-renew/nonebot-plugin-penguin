@@ -1,13 +1,15 @@
 [tool.poetry]
 name = "testpy"
 version = "1.0.0"
-description = "python功能测试"
+description = "nonebot-plugin-penguin dependencies"
 authors = ["Azide <rukuy@qq.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
 pandas = "^1.4.2"
+requests = "^2.27.1"
+tinydb = "^4.7.0"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.6.0"

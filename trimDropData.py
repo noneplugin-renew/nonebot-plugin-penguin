@@ -36,6 +36,10 @@ def pushApCost(stageId: str) -> int:
     return apCost if apCost else 0
 
 
+def freqStr(freq:float) -> str:
+    freqstr=str(freq*100)
+    return f'{freqstr[:6]}%'
+
 dropItemDf = pd.read_json('./db/dropItem.json')
 
 # print(dropItemJson.dtypes)
@@ -84,5 +88,32 @@ dropItemDfByFreq = dropItemDf.sort_values(by='frequency', ascending=False)
 dropItemDfByaCPI = dropItemDf.sort_values(by='aCPI', ascending=True)
 dropItemDfByFreq.reset_index(drop=True, inplace=True)
 dropItemDfByaCPI.reset_index(drop=True, inplace=True)
-print(dropItemDfByaCPI.head())
-print(dropItemDfByFreq.head())
+#print(dropItemDfByaCPI.head())
+#print(dropItemDfByFreq.head())
+
+# 生成输出到html文件的dataframe
+renameDict={'stageName':'关卡','apCost':'理智','frequency':'掉率','aCPI':'单件期望理智'}
+HTMLColumn=['关卡','理智','掉率','单件期望理智']
+
+dropItemDfToHTML=dropItemDfByaCPI.copy()
+dropItemDfToHTML.frequency=dropItemDfToHTML.apply(
+    lambda x: freqStr(x.frequency),axis=1
+)
+dropItemDfToHTML.aCPI=dropItemDfToHTML.apply(
+    lambda x: round(x.aCPI,3),axis=1
+)
+dropItemDfToHTML.rename(columns=renameDict,inplace=True)
+print(dropItemDfToHTML.head())
+
+dropItemDfToHTML2=dropItemDfByFreq.copy()
+dropItemDfToHTML2.frequency=dropItemDfToHTML2.apply(
+    lambda x: freqStr(x.frequency),axis=1
+)
+dropItemDfToHTML2.aCPI=dropItemDfToHTML2.apply(
+    lambda x: round(x.aCPI,3),axis=1
+)
+dropItemDfToHTML2.rename(columns=renameDict,inplace=True)
+
+with open('./test.html','w',encoding='utf-8') as htmlfile:
+    print(dropItemDfToHTML.head(8).to_html(columns=HTMLColumn,index=False),file=htmlfile)
+    print(dropItemDfToHTML2.head(8).to_html(columns=HTMLColumn,index=False),file=htmlfile)

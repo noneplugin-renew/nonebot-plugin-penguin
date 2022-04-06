@@ -1,0 +1,743 @@
+{
+    "_default": {
+        "1": {
+            "itemId": "2001",
+            "name": "\u57fa\u7840\u4f5c\u6218\u8bb0\u5f55",
+            "alias": [
+                "\u57fa\u7840\u4f5c\u6218\u8bb0\u5f55",
+                "\u72d7\u7cae",
+                "\u5f55\u50cf\u5e26",
+                "\u7ecf\u9a8c\u5361"
+            ]
+        },
+        "2": {
+            "itemId": "2002",
+            "name": "\u521d\u7ea7\u4f5c\u6218\u8bb0\u5f55",
+            "alias": [
+                "\u521d\u7ea7\u4f5c\u6218\u8bb0\u5f55",
+                "\u72d7\u7cae",
+                "\u5f55\u50cf\u5e26",
+                "\u7ecf\u9a8c\u5361"
+            ]
+        },
+        "3": {
+            "itemId": "2003",
+            "name": "\u4e2d\u7ea7\u4f5c\u6218\u8bb0\u5f55",
+            "alias": [
+                "\u4e2d\u7ea7\u4f5c\u6218\u8bb0\u5f55",
+                "\u72d7\u7cae",
+                "\u5f55\u50cf\u5e26",
+                "\u7ecf\u9a8c\u5361"
+            ]
+        },
+        "4": {
+            "itemId": "2004",
+            "name": "\u9ad8\u7ea7\u4f5c\u6218\u8bb0\u5f55",
+            "alias": [
+                "\u9ad8\u7ea7\u4f5c\u6218\u8bb0\u5f55",
+                "\u72d7\u7cae",
+                "\u5f55\u50cf\u5e26",
+                "\u7ecf\u9a8c\u5361"
+            ]
+        },
+        "5": {
+            "itemId": "3003",
+            "name": "\u8d64\u91d1",
+            "alias": [
+                "\u8d64\u91d1",
+                "\u91d1\u6761"
+            ]
+        },
+        "6": {
+            "itemId": "30011",
+            "name": "\u6e90\u5ca9",
+            "alias": [
+                "\u6e90\u5ca9",
+                "\u571f\u5757",
+                "\u77f3\u5934"
+            ]
+        },
+        "7": {
+            "itemId": "30012",
+            "name": "\u56fa\u6e90\u5ca9",
+            "alias": [
+                "\u56fa\u6e90\u5ca9",
+                "\u571f\u5757",
+                "\u77f3\u5934"
+            ]
+        },
+        "8": {
+            "itemId": "30013",
+            "name": "\u56fa\u6e90\u5ca9\u7ec4",
+            "alias": [
+                "\u56fa\u6e90\u5ca9\u7ec4",
+                "\u571f\u5757",
+                "\u77f3\u5934"
+            ]
+        },
+        "9": {
+            "itemId": "30014",
+            "name": "\u63d0\u7eaf\u6e90\u5ca9",
+            "alias": [
+                "\u63d0\u7eaf\u6e90\u5ca9",
+                "\u571f\u5757",
+                "\u77f3\u5934"
+            ]
+        },
+        "10": {
+            "itemId": "30061",
+            "name": "\u7834\u635f\u88c5\u7f6e",
+            "alias": [
+                "\u7834\u635f\u88c5\u7f6e"
+            ]
+        },
+        "11": {
+            "itemId": "30062",
+            "name": "\u88c5\u7f6e",
+            "alias": [
+                "\u88c5\u7f6e"
+            ]
+        },
+        "12": {
+            "itemId": "30063",
+            "name": "\u5168\u65b0\u88c5\u7f6e",
+            "alias": [
+                "\u5168\u65b0\u88c5\u7f6e"
+            ]
+        },
+        "13": {
+            "itemId": "30064",
+            "name": "\u6539\u91cf\u88c5\u7f6e",
+            "alias": [
+                "\u6539\u91cf\u88c5\u7f6e"
+            ]
+        },
+        "14": {
+            "itemId": "30031",
+            "name": "\u916f\u539f\u6599",
+            "alias": [
+                "\u916f\u539f\u6599"
+            ]
+        },
+        "15": {
+            "itemId": "30032",
+            "name": "\u805a\u9178\u916f",
+            "alias": [
+                "\u805a\u9178\u916f"
+            ]
+        },
+        "16": {
+            "itemId": "30033",
+            "name": "\u805a\u9178\u916f\u7ec4",
+            "alias": [
+                "\u805a\u9178\u916f\u7ec4"
+            ]
+        },
+        "17": {
+            "itemId": "30034",
+            "name": "\u805a\u9178\u916f\u5757",
+            "alias": [
+                "\u805a\u9178\u916f\u5757"
+            ]
+        },
+        "18": {
+            "itemId": "30021",
+            "name": "\u4ee3\u7cd6",
+            "alias": [
+                "\u4ee3\u7cd6"
+            ]
+        },
+        "19": {
+            "itemId": "30022",
+            "name": "\u7cd6",
+            "alias": [
+                "\u7cd6"
+            ]
+        },
+        "20": {
+            "itemId": "30023",
+            "name": "\u7cd6\u7ec4",
+            "alias": [
+                "\u7cd6\u7ec4"
+            ]
+        },
+        "21": {
+            "itemId": "30024",
+            "name": "\u7cd6\u805a\u5757",
+            "alias": [
+                "\u7cd6\u805a\u5757"
+            ]
+        },
+        "22": {
+            "itemId": "30041",
+            "name": "\u5f02\u94c1\u788e\u7247",
+            "alias": [
+                "\u5f02\u94c1\u788e\u7247"
+            ]
+        },
+        "23": {
+            "itemId": "30042",
+            "name": "\u5f02\u94c1",
+            "alias": [
+                "\u5f02\u94c1"
+            ]
+        },
+        "24": {
+            "itemId": "30043",
+            "name": "\u5f02\u94c1\u7ec4",
+            "alias": [
+                "\u5f02\u94c1\u7ec4"
+            ]
+        },
+        "25": {
+            "itemId": "30044",
+            "name": "\u5f02\u94c1\u5757",
+            "alias": [
+                "\u5f02\u94c1\u5757"
+            ]
+        },
+        "26": {
+            "itemId": "30051",
+            "name": "\u53cc\u916e",
+            "alias": [
+                "\u53cc\u916e"
+            ]
+        },
+        "27": {
+            "itemId": "30052",
+            "name": "\u916e\u51dd\u96c6",
+            "alias": [
+                "\u916e\u51dd\u96c6"
+            ]
+        },
+        "28": {
+            "itemId": "30053",
+            "name": "\u916e\u51dd\u96c6\u7ec4",
+            "alias": [
+                "\u916e\u51dd\u96c6\u7ec4",
+                "\u80f6\u56ca"
+            ]
+        },
+        "29": {
+            "itemId": "30054",
+            "name": "\u916e\u9635\u5217",
+            "alias": [
+                "\u916e\u9635\u5217",
+                "\u8702\u871c"
+            ]
+        },
+        "30": {
+            "itemId": "30073",
+            "name": "\u626d\u8f6c\u9187",
+            "alias": [
+                "\u626d\u8f6c\u9187",
+                "\u53e3\u9999\u7cd6",
+                "\u9999\u53e3\u80f6",
+                "\u6c34\u679c\u7cd6"
+            ]
+        },
+        "31": {
+            "itemId": "30074",
+            "name": "\u767d\u9a6c\u9187",
+            "alias": [
+                "\u767d\u9a6c\u9187",
+                "\u53e3\u9999\u7cd6",
+                "\u9999\u53e3\u80f6",
+                "\u6c34\u679c\u7cd6",
+                "\u53f8\u9a6c\u9187"
+            ]
+        },
+        "32": {
+            "itemId": "30083",
+            "name": "\u8f7b\u9530\u77ff",
+            "alias": [
+                "\u8f7b\u9530\u77ff",
+                "\u7d2b\u6c34\u6676",
+                "\u7d2b\u6d77\u82d4",
+                "\u7d2b\u85af",
+                "\u7d2b\u65b9\u5757",
+                "\u7d2b\u7816\u5934"
+            ]
+        },
+        "33": {
+            "itemId": "30084",
+            "name": "\u4e09\u6c34\u9530\u77ff",
+            "alias": [
+                "\u4e09\u6c34\u9530\u77ff",
+                "\u7d2b\u6c34\u6676",
+                "\u7d2b\u6d77\u82d4",
+                "\u7d2b\u85af",
+                "\u7d2b\u65b9\u5757",
+                "\u7d2b\u7816\u5934"
+            ]
+        },
+        "34": {
+            "itemId": "30093",
+            "name": "\u7814\u78e8\u77f3",
+            "alias": [
+                "\u7814\u78e8\u77f3",
+                "\u78e8\u5200\u77f3",
+                "\u5730\u7816",
+                "\u74f7\u7816"
+            ]
+        },
+        "35": {
+            "itemId": "30094",
+            "name": "\u4e94\u6c34\u7814\u78e8\u77f3",
+            "alias": [
+                "\u4e94\u6c34\u7814\u78e8\u77f3",
+                "\u78e8\u5200\u77f3",
+                "\u5730\u7816",
+                "\u74f7\u7816",
+                "\u5927\u5730\u7816",
+                "\u5927\u74f7\u7816"
+            ]
+        },
+        "36": {
+            "itemId": "30103",
+            "name": "RMA70-12",
+            "alias": [
+                "RMA70-12",
+                "\u6d77\u80c6",
+                "\u523a\u7403",
+                "\u5723\u6676\u77f3"
+            ]
+        },
+        "37": {
+            "itemId": "30104",
+            "name": "RMA70-24",
+            "alias": [
+                "RMA70-24",
+                "\u6d77\u80c6",
+                "\u523a\u7403",
+                "\u5723\u6676\u77f3"
+            ]
+        },
+        "38": {
+            "itemId": "furni",
+            "name": "\u5bb6\u5177",
+            "alias": [
+                "\u5bb6\u5177"
+            ]
+        },
+        "39": {
+            "itemId": "3112",
+            "name": "\u78b3",
+            "alias": [
+                "\u78b3"
+            ]
+        },
+        "40": {
+            "itemId": "3113",
+            "name": "\u78b3\u7d20",
+            "alias": [
+                "\u78b3\u7d20"
+            ]
+        },
+        "41": {
+            "itemId": "3114",
+            "name": "\u78b3\u7d20\u7ec4",
+            "alias": [
+                "\u78b3\u7d20\u7ec4"
+            ]
+        },
+        "42": {
+            "itemId": "3301",
+            "name": "\u6280\u5de7\u6982\u8981\u00b7\u53771",
+            "alias": [
+                "\u6280\u5de7\u6982\u8981\u00b7\u53771",
+                "\u6280\u80fd\u4e66",
+                "\u767d\u4e66"
+            ]
+        },
+        "43": {
+            "itemId": "3302",
+            "name": "\u6280\u5de7\u6982\u8981\u00b7\u53772",
+            "alias": [
+                "\u6280\u5de7\u6982\u8981\u00b7\u53772",
+                "\u6280\u80fd\u4e66",
+                "\u7eff\u4e66"
+            ]
+        },
+        "44": {
+            "itemId": "3303",
+            "name": "\u6280\u5de7\u6982\u8981\u00b7\u53773",
+            "alias": [
+                "\u6280\u5de7\u6982\u8981\u00b7\u53773",
+                "\u6280\u80fd\u4e66",
+                "\u84dd\u4e66"
+            ]
+        },
+        "45": {
+            "itemId": "et_ObsidianPass",
+            "name": "\u9ed1\u66dc\u77f3\u8282\u95e8\u7968",
+            "alias": [
+                "\u9ed1\u66dc\u77f3\u8282\u95e8\u7968"
+            ]
+        },
+        "46": {
+            "itemId": "token_Obsidian",
+            "name": "\u6c50\u65af\u5854\u7684\u9ed1\u66dc\u77f3",
+            "alias": [
+                "\u6c50\u65af\u5854\u7684\u9ed1\u66dc\u77f3"
+            ]
+        },
+        "47": {
+            "itemId": "token_ObsidianCoin",
+            "name": "\u9ed1\u66dc\u77f3\u8282\u62bd\u5956\u4ee3\u5e01",
+            "alias": [
+                "\u9ed1\u66dc\u77f3\u8282\u62bd\u5956\u4ee3\u5e01"
+            ]
+        },
+        "48": {
+            "itemId": "4001_2000",
+            "name": "\u9f99\u95e8\u5e012000",
+            "alias": [
+                "\u9f99\u95e8\u5e012000",
+                "\u94b1"
+            ]
+        },
+        "49": {
+            "itemId": "4001_1500",
+            "name": "\u9f99\u95e8\u5e011500",
+            "alias": [
+                "\u9f99\u95e8\u5e011500",
+                "\u94b1"
+            ]
+        },
+        "50": {
+            "itemId": "4001_1000",
+            "name": "\u9f99\u95e8\u5e011000",
+            "alias": [
+                "\u9f99\u95e8\u5e011000",
+                "\u94b1"
+            ]
+        },
+        "51": {
+            "itemId": "31013",
+            "name": "\u51dd\u80f6",
+            "alias": [
+                "\u51dd\u80f6",
+                "\u679c\u51bb",
+                "\u94e0\u7532"
+            ]
+        },
+        "52": {
+            "itemId": "31014",
+            "name": "\u805a\u5408\u51dd\u80f6",
+            "alias": [
+                "\u805a\u5408\u51dd\u80f6",
+                "\u679c\u51bb",
+                "\u94e0\u7532"
+            ]
+        },
+        "53": {
+            "itemId": "31023",
+            "name": "\u70bd\u5408\u91d1",
+            "alias": [
+                "\u70bd\u5408\u91d1",
+                "\u6c34\u94f6"
+            ]
+        },
+        "54": {
+            "itemId": "31024",
+            "name": "\u70bd\u5408\u91d1\u5757",
+            "alias": [
+                "\u70bd\u5408\u91d1\u5757",
+                "\u6c34\u94f6",
+                "\u5927\u6c34\u94f6"
+            ]
+        },
+        "55": {
+            "itemId": "randomMaterial_1",
+            "name": "\u7f57\u5fb7\u5c9b\u7269\u8d44\u8865\u7ed9",
+            "alias": [
+                "\u7f57\u5fb7\u5c9b\u7269\u8d44\u8865\u7ed9",
+                "\u8865\u7ed9\u7bb1"
+            ]
+        },
+        "56": {
+            "itemId": "ap_supply_lt_010",
+            "name": "\u5e94\u6025\u7406\u667a\u5c0f\u6837",
+            "alias": [
+                "\u5e94\u6025\u7406\u667a\u5c0f\u6837"
+            ]
+        },
+        "57": {
+            "itemId": "randomMaterial_2",
+            "name": "\u5c81\u8fc7\u534e\u706f",
+            "alias": [
+                "\u5c81\u8fc7\u534e\u706f"
+            ]
+        },
+        "58": {
+            "itemId": "4005",
+            "name": "\u8d44\u8d28\u51ed\u8bc1",
+            "alias": [
+                "\u8d44\u8d28\u51ed\u8bc1",
+                "\u7eff\u7968"
+            ]
+        },
+        "59": {
+            "itemId": "30115",
+            "name": "\u805a\u5408\u5242",
+            "alias": [
+                "\u805a\u5408\u5242",
+                "\u80f6\u6c34"
+            ]
+        },
+        "60": {
+            "itemId": "30125",
+            "name": "\u53cc\u6781\u7eb3\u7c73\u7247",
+            "alias": [
+                "\u53cc\u6781\u7eb3\u7c73\u7247"
+            ]
+        },
+        "61": {
+            "itemId": "30135",
+            "name": "D32\u94a2",
+            "alias": [
+                "D32\u94a2",
+                "\u94a2\u4e1d\u7403",
+                "\u661f\u6781"
+            ]
+        },
+        "62": {
+            "itemId": "randomMaterial_3",
+            "name": "32h\u6218\u7565\u914d\u7ed9",
+            "alias": [
+                "32h\u6218\u7565\u914d\u7ed9",
+                "\u8865\u7ed9\u7bb1"
+            ]
+        },
+        "63": {
+            "itemId": "randomMaterial_4",
+            "name": "\u611f\u8c22\u5e86\u5178\u7269\u8d44\u8865\u7ed9",
+            "alias": [
+                "\u611f\u8c22\u5e86\u5178\u7269\u8d44\u8865\u7ed9",
+                "\u8865\u7ed9\u7bb1"
+            ]
+        },
+        "64": {
+            "itemId": "31033",
+            "name": "\u6676\u4f53\u5143\u4ef6",
+            "alias": [
+                "\u6676\u4f53\u5143\u4ef6",
+                "\u7535\u8def\u677f"
+            ]
+        },
+        "65": {
+            "itemId": "31034",
+            "name": "\u6676\u4f53\u7535\u8def",
+            "alias": [
+                "\u6676\u4f53\u7535\u8def",
+                "\u7535\u8def\u677f"
+            ]
+        },
+        "66": {
+            "itemId": "30145",
+            "name": "\u6676\u4f53\u7535\u5b50\u5355\u5143",
+            "alias": [
+                "\u6676\u4f53\u7535\u5b50\u5355\u5143",
+                "\u7535\u8def\u677f"
+            ]
+        },
+        "67": {
+            "itemId": "3211",
+            "name": "\u5148\u950b\u82af\u7247",
+            "alias": [
+                "\u5148\u950b\u82af\u7247"
+            ]
+        },
+        "68": {
+            "itemId": "3221",
+            "name": "\u8fd1\u536b\u82af\u7247",
+            "alias": [
+                "\u8fd1\u536b\u82af\u7247"
+            ]
+        },
+        "69": {
+            "itemId": "3241",
+            "name": "\u72d9\u51fb\u82af\u7247",
+            "alias": [
+                "\u72d9\u51fb\u82af\u7247"
+            ]
+        },
+        "70": {
+            "itemId": "3231",
+            "name": "\u91cd\u88c5\u82af\u7247",
+            "alias": [
+                "\u91cd\u88c5\u82af\u7247"
+            ]
+        },
+        "71": {
+            "itemId": "3261",
+            "name": "\u533b\u7597\u82af\u7247",
+            "alias": [
+                "\u533b\u7597\u82af\u7247"
+            ]
+        },
+        "72": {
+            "itemId": "3271",
+            "name": "\u8f85\u52a9\u82af\u7247",
+            "alias": [
+                "\u8f85\u52a9\u82af\u7247"
+            ]
+        },
+        "73": {
+            "itemId": "3251",
+            "name": "\u672f\u5e08\u82af\u7247",
+            "alias": [
+                "\u672f\u5e08\u82af\u7247"
+            ]
+        },
+        "74": {
+            "itemId": "3281",
+            "name": "\u7279\u79cd\u82af\u7247",
+            "alias": [
+                "\u7279\u79cd\u82af\u7247"
+            ]
+        },
+        "75": {
+            "itemId": "3212",
+            "name": "\u5148\u950b\u82af\u7247\u7ec4",
+            "alias": [
+                "\u5148\u950b\u82af\u7247\u7ec4"
+            ]
+        },
+        "76": {
+            "itemId": "3222",
+            "name": "\u8fd1\u536b\u82af\u7247\u7ec4",
+            "alias": [
+                "\u8fd1\u536b\u82af\u7247\u7ec4"
+            ]
+        },
+        "77": {
+            "itemId": "3242",
+            "name": "\u72d9\u51fb\u82af\u7247\u7ec4",
+            "alias": [
+                "\u72d9\u51fb\u82af\u7247\u7ec4"
+            ]
+        },
+        "78": {
+            "itemId": "3232",
+            "name": "\u91cd\u88c5\u82af\u7247\u7ec4",
+            "alias": [
+                "\u91cd\u88c5\u82af\u7247\u7ec4"
+            ]
+        },
+        "79": {
+            "itemId": "3262",
+            "name": "\u533b\u7597\u82af\u7247\u7ec4",
+            "alias": [
+                "\u533b\u7597\u82af\u7247\u7ec4"
+            ]
+        },
+        "80": {
+            "itemId": "3272",
+            "name": "\u8f85\u52a9\u82af\u7247\u7ec4",
+            "alias": [
+                "\u8f85\u52a9\u82af\u7247\u7ec4"
+            ]
+        },
+        "81": {
+            "itemId": "3252",
+            "name": "\u672f\u5e08\u82af\u7247\u7ec4",
+            "alias": [
+                "\u672f\u5e08\u82af\u7247\u7ec4"
+            ]
+        },
+        "82": {
+            "itemId": "3282",
+            "name": "\u7279\u79cd\u82af\u7247\u7ec4",
+            "alias": [
+                "\u7279\u79cd\u82af\u7247\u7ec4"
+            ]
+        },
+        "83": {
+            "itemId": "charm_r1",
+            "name": "\u6807\u5fd7\u7269 - 20\u4ee3\u91d1\u5238",
+            "alias": [
+                "\u6807\u5fd7\u7269 - 20\u4ee3\u91d1\u5238"
+            ]
+        },
+        "84": {
+            "itemId": "charm_coin_1",
+            "name": "\u9ec4\u91d1\u7b79\u7801",
+            "alias": [
+                "\u9ec4\u91d1\u7b79\u7801"
+            ]
+        },
+        "85": {
+            "itemId": "charm_coin_4",
+            "name": "\u7fe1\u7fe0\u5ead\u9662\u81f3\u81fb",
+            "alias": [
+                "\u7fe1\u7fe0\u5ead\u9662\u81f3\u81fb"
+            ]
+        },
+        "86": {
+            "itemId": "31054",
+            "name": "\u5207\u524a\u539f\u6db2",
+            "alias": [
+                "\u5207\u524a\u539f\u6db2"
+            ]
+        },
+        "87": {
+            "itemId": "31053",
+            "name": "\u5316\u5408\u5207\u524a\u6db2",
+            "alias": [
+                "\u5316\u5408\u5207\u524a\u6db2"
+            ]
+        },
+        "88": {
+            "itemId": "31043",
+            "name": "\u534a\u81ea\u7136\u6eb6\u5242",
+            "alias": [
+                "\u534a\u81ea\u7136\u6eb6\u5242"
+            ]
+        },
+        "89": {
+            "itemId": "31044",
+            "name": "\u7cbe\u70bc\u6eb6\u5242",
+            "alias": [
+                "\u7cbe\u70bc\u6eb6\u5242"
+            ]
+        },
+        "90": {
+            "itemId": "randomMaterial_5",
+            "name": "\u7f57\u5fb7\u5c9b\u7269\u8d44\u8865\u7ed9II",
+            "alias": [
+                "\u7f57\u5fb7\u5c9b\u7269\u8d44\u8865\u7ed9",
+                "\u8865\u7ed9\u7bb1"
+            ]
+        },
+        "91": {
+            "itemId": "trap_oxygen_3",
+            "name": "\u6c99\u5179\u4e13\u4e1a\u9540\u819c\u88c5\u7f6e",
+            "alias": [
+                "\u6c99\u5179\u4e13\u4e1a\u9540\u819c\u88c5\u7f6e"
+            ]
+        },
+        "92": {
+            "itemId": "charm_coin_3",
+            "name": "\u53cc\u65e5\u57ce\u5927\u4e50\u900f",
+            "alias": [
+                "\u53cc\u65e5\u57ce\u5927\u4e50\u900f"
+            ]
+        },
+        "93": {
+            "itemId": "charm_r2",
+            "name": "\u6807\u5fd7\u7269 - 40\u4ee3\u91d1\u5238",
+            "alias": [
+                "\u6807\u5fd7\u7269 - 40\u4ee3\u91d1\u5238"
+            ]
+        },
+        "94": {
+            "itemId": "charm_coin_2",
+            "name": "\u9519\u7248\u786c\u5e01",
+            "alias": [
+                "\u9519\u7248\u786c\u5e01"
+            ]
+        }
+    }
+}

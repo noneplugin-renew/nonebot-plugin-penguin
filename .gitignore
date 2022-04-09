@@ -56,7 +56,10 @@ coverage.xml
 *.pot
 
 #tinydb db json
-db/
+db/*.json
+
+#html output file
+html/*.html
 
 # Django stuff:
 *.log

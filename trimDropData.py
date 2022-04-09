@@ -17,7 +17,12 @@ def stampToTime(stamp: int) -> str:
 
 def pushStageName(stageId: str) -> str:
     stage = stagedb.search(stageQuery.stageId == stageId)
-    return stage[0]['code']
+    if stageId[-3:] == 'erm':
+        return stage[0]['code']+'·常驻'
+    elif stageId[-3:] == 'rep':
+        return stage[0]['code']+'·复刻'
+    else:
+        return stage[0]['code']
 
 
 def calFrequency(times: int, quantity: int) -> float:
@@ -57,7 +62,7 @@ columnList1 = dropItemDf.columns.to_list()
 columnList1.insert(columnList1.index('quantity')+1, 'frequency')
 columnList1.insert(columnList1.index('stageId')+1, 'stageName')
 dropItemDf = dropItemDf.reindex(columns=columnList1)
-# 写入name
+# 写入stageName
 dropItemDf.stageName = dropItemDf.apply(
     lambda x: pushStageName(x.stageId), axis=1
 )
@@ -92,8 +97,10 @@ dropItemDfByaCPI.reset_index(drop=True, inplace=True)
 #print(dropItemDfByFreq.head())
 
 # 生成输出到html文件的dataframe
-renameDict={'stageName':'关卡','apCost':'理智','frequency':'掉率','aCPI':'单件期望理智'}
-HTMLColumn=['关卡','理智','掉率','单件期望理智']
+renameDict={'stageName':'关卡','apCost':'理智','frequency':'掉率\u2191','aCPI':'单件期望理智'}
+renameDict2={'stageName':'关卡','apCost':'理智','frequency':'掉率','aCPI':'单件期望理智\u2193'}
+HTMLColumn=['关卡','理智','掉率\u2191','单件期望理智']
+HTMLColumn2=['关卡','理智','掉率','单件期望理智\u2193']
 
 dropItemDfToHTML=dropItemDfByaCPI.copy()
 dropItemDfToHTML.frequency=dropItemDfToHTML.apply(
@@ -102,8 +109,8 @@ dropItemDfToHTML.frequency=dropItemDfToHTML.apply(
 dropItemDfToHTML.aCPI=dropItemDfToHTML.apply(
     lambda x: round(x.aCPI,3),axis=1
 )
-dropItemDfToHTML.rename(columns=renameDict,inplace=True)
-print(dropItemDfToHTML.head())
+dropItemDfToHTML.rename(columns=renameDict2,inplace=True)
+print(dropItemDfToHTML.to_string())
 
 dropItemDfToHTML2=dropItemDfByFreq.copy()
 dropItemDfToHTML2.frequency=dropItemDfToHTML2.apply(
@@ -114,6 +121,16 @@ dropItemDfToHTML2.aCPI=dropItemDfToHTML2.apply(
 )
 dropItemDfToHTML2.rename(columns=renameDict,inplace=True)
 
-with open('./test.html','w',encoding='utf-8') as htmlfile:
-    print(dropItemDfToHTML.head(8).to_html(columns=HTMLColumn,index=False),file=htmlfile)
+with open('./html/test.html','w',encoding='utf-8') as htmlfile:
+    print('<!DOCTYPE html>\
+        <html>\
+          <head>\
+              <meta charset="utf-8">\
+              <title>企鹅物流数据查询</title>\
+              <link rel="stylesheet" type="text/css" href="styles.css">\
+          </head>\
+          <body>',file=htmlfile)
+    print(dropItemDfToHTML.head(8).to_html(columns=HTMLColumn2,index=False),file=htmlfile)
     print(dropItemDfToHTML2.head(8).to_html(columns=HTMLColumn,index=False),file=htmlfile)
+    print('</body>\
+        </html>',file=htmlfile)

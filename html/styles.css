@@ -3,7 +3,7 @@ html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
- 
+
 body {
     margin: 10px;
 }
@@ -16,8 +16,9 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
- 
-td,th {
+
+td,
+th {
     padding: 0;
     text-align: center;
 }
@@ -33,15 +34,16 @@ tr {
     border: 1px solid #cbcbcb;
     width: 28em;
 }
- 
+
 .dataframe caption {
     color: #000;
-    font: italic 85%/1 arial,sans-serif;
+    font: italic 85%/1 arial, sans-serif;
     padding: 1em 0;
     text-align: center;
 }
- 
-.dataframe td,.dataframe th { 
+
+.dataframe td,
+.dataframe th {
     border-left: 1px solid #cbcbcb;
     border-width: 0 0 0 1px;
     font-size: inherit;
@@ -49,23 +51,24 @@ tr {
     overflow: visible;
     padding: .5em 1em;
 }
- 
+
 .dataframe thead {
     background-color: #e0e0e0;
     color: #000;
     text-align: left;
     vertical-align: bottom;
 }
- 
+
 .dataframe td {
     background-color: transparent;
 }
- 
-.dataframe td, .dataframe th {
+
+.dataframe td,
+.dataframe th {
     border-width: 0 0 1px 0;
     border-bottom: 1px solid #cbcbcb;
 }
- 
+
 .dataframe tbody>tr:last-child>td {
     border-bottom-width: 0;
 }

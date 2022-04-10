@@ -55,6 +55,9 @@ coverage.xml
 *.mo
 *.pot
 
+#vscode config
+.vscode
+
 #tinydb db json
 db/*.json
 

@@ -2,7 +2,7 @@ import requests
 import json
 
 url = 'https://penguin-stats.io/PenguinStats/api/v2/result/matrix'
-param = {'itemFilter': '30083'}
+param = {'itemFilter': '30043'}
 response = requests.get(url=url, params=param)
 print(response.url, response.status_code, sep='\n')
 raw_data = json.loads(response.content)

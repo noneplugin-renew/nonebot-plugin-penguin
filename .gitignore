@@ -61,6 +61,9 @@ db/*.json
 #html output file
 html/*.html
 
+#python future test file
+test_temp.py
+
 # Django stuff:
 *.log
 local_settings.py

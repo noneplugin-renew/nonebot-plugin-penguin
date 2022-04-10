@@ -7,6 +7,11 @@ html {
 body {
     margin: 10px;
 }
+
+div {
+    width: 28em;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -63,4 +68,8 @@ tr {
  
 .dataframe tbody>tr:last-child>td {
     border-bottom-width: 0;
+}
+
+#item-name {
+    text-align: center;
 }

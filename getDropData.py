@@ -11,3 +11,7 @@ def getDropDate(itemId: str, url: str = 'https://penguin-stats.io/PenguinStats/a
     with open(fileDir, 'w', encoding='UTF-8') as wr:
         json.dump(data, wr, indent=4)
     return response.status_code
+
+if __name__ == '__main__':
+    itemFind=input('需要查询的物品id：')
+    

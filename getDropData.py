@@ -2,7 +2,8 @@ import requests
 import json
 
 
-def getDropDate(itemId: str, url: str = 'https://penguin-stats.io/PenguinStats/api/v2/result/matrix', fileDir: str = "./db/dropItem.json") -> str:
+def getDropData(itemId: str, url: str = 'https://penguin-stats.io/PenguinStats/api/v2/result/matrix', fileDir: str = "./db/dropItem.json") -> str:
+    '''返回http响应代码'''
     param = {'itemFilter': str(itemId)}
     response = requests.get(url=url, params=param)
     #print(response.url, response.status_code, sep='\n')

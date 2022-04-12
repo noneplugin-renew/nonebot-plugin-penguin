@@ -68,6 +68,14 @@ def updateItemInfo(updateType: Literal['items', 'stages', 'all'], dbLink: str = 
         return 'OK', updateTime
 
 
+def updateCheck(dbLink: str = './db/infoIdDB.json'):
+    '''检测itemId和stageId数据库是否需要更新'''
+    infodb = TinyDB(dbLink, indent=4)
+    itemdb=infodb.table('items')
+    stagedb=infodb.table('stages')
+    itemdbLastUpdateTime=itemdb.search
+
+
 if __name__ == '__main__':
     '''
     result, updatetime = updateItemInfo('items')

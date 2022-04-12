@@ -3,7 +3,7 @@ from pandas import Timestamp
 import requests
 import json
 import time
-from tinydb import TinyDB
+from tinydb import Query, TinyDB
 
 
 def updateItemInfo(updateType: Literal['items', 'stages', 'all'], dbLink: str = './db/infoIdDB.json', url: str = 'https://penguin-stats.io/PenguinStats/api/v2/') -> tuple[str, int]:
@@ -68,12 +68,19 @@ def updateItemInfo(updateType: Literal['items', 'stages', 'all'], dbLink: str = 
         return 'OK', updateTime
 
 
-def updateCheck(dbLink: str = './db/infoIdDB.json'):
-    '''检测itemId和stageId数据库是否需要更新'''
+def updateCheck(dbLink: str = './db/infoIdDB.json') -> dict:
+    '''检测itemId和stageId数据库是否需要更新 返回diffSeconds['item','stage']'''
     infodb = TinyDB(dbLink, indent=4)
     itemdb=infodb.table('items')
     stagedb=infodb.table('stages')
-    itemdbLastUpdateTime=itemdb.search
+    itemdbLastUpdateTime=itemdb.search(Query().updateTime.exists())[0]['updateTime']
+    stagedbLastUpdateTime=stagedb.search(Query().updateTime.exists())[0]['updateTime']
+    nowTime=int(time.time())
+    diffSeconds = {
+        'item':(nowTime - int(itemdbLastUpdateTime)),
+        'stage':(nowTime - int(stagedbLastUpdateTime))
+        }
+    return diffSeconds
 
 
 if __name__ == '__main__':
@@ -83,5 +90,12 @@ if __name__ == '__main__':
     result, updatetime = updateItemInfo('stages')
     print(result, updatetime, sep='\n')
     '''
-    result, updatetime = updateItemInfo('all')
-    print(result, updatetime, sep='\n')
+    id=int(input('id:'))
+    if id == 1:
+        result, updatetime = updateItemInfo('all')
+        print(result, updatetime, sep='\n')
+    elif id == 2:
+        diff=updateCheck()
+        temp = time.ctime(diff['item'])
+        diffHours=round(diff['item']/(60*60),3)
+        print(f'{diffHours}hour')

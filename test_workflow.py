@@ -2,10 +2,25 @@ import pandas
 from queryInfo import queryItemInfo
 from getDropData import getDropData
 from trimDropData import trimDropData, dumpToHMTL
+from updateInfo import updateCheck,updateItemInfo
 import logging
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
+
+
+updateDelta = updateCheck()
+if updateDelta['item']/(60*60*24) > 1 :
+    choice=input("item数据库距离上次更新时间已经大于七天，是否更新（y|n）：")
+    if choice.upper() == 'Y':
+        result = updateItemInfo('items')
+        print(f"{result[0]}")
+if updateDelta['stage']/(60*60*24) > 7 :
+    choice=input("stage数据库距离上次更新时间已经大于七天，是否更新（y|n）：")
+    if choice.upper() == 'Y':
+        result = updateItemInfo('stages')
+        print(f"{result[0]}")   
+    
 
 itemName = input("需要查询的物品：")
 logging.debug(f'get name:{itemName}')

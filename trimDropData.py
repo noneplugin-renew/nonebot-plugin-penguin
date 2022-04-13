@@ -2,7 +2,8 @@ import time
 
 import pandas as pd
 from tinydb import Query, TinyDB
-import pyh
+#import pyh
+from pyhtml import pyh,tag
 
 
 def _stampToTime(stamp: int) -> str:
@@ -134,7 +135,7 @@ def dumpToHMTL(dropItemDfByFreq: pd.DataFrame, dropItemDfByaCPI: pd.DataFrame, d
 
         page=pyh.PyH('企鹅物流数据查询')
         page.addCSS('styles.css')
-        page << pyh.div(id='table') << pyh.h3(f'{itemName}',id='item-name')
+        page << tag.div(id='table') << tag.h3(f'{itemName}',id='item-name')
         page.table << dropItemDfToHTMLByaCPI.head(8).to_html(columns=HTMLColumnByaCPI, index=False)
         page.table << dropItemDfToHTMLByFreq.head(8).to_html(columns=HTMLColumnByFreq, index=False)
         page.printOut('./html/test.html')

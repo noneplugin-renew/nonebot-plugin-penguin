@@ -1,8 +1,8 @@
 import pandas
-from queryInfo import queryItemInfo
-from getDropData import getDropData
-from trimDropData import trimDropData, dumpToHMTL
-from updateInfo import updateCheck,updateItemInfo
+from dataTrim.queryInfo import queryItemInfo
+from dataTrim.getDropData import getDropData
+from dataTrim.trimDropData import trimDropData, dumpToHMTL
+from dataTrim.updateInfo import updateCheck,updateItemInfo
 import logging
 
 logging.basicConfig(level=logging.INFO,
@@ -53,3 +53,4 @@ for trimData in trimDataList:
 isToHtml=input('是否输出成HTML(y|n)：')
 if isToHtml.upper() == 'Y':
     resultHtml = dumpToHMTL(*trimDataList)
+    print(resultHtml)

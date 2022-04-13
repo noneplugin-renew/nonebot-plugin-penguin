@@ -20,5 +20,5 @@ def queryItemInfo(itemName:str, dbLink='./db/infoIdDB.json'):
 
 
 if __name__ == "__main__":
-    itemInfo = queryItemInfo()
+    itemInfo = queryItemInfo(input("name:"))
     print(itemInfo)

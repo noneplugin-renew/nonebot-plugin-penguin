@@ -2,8 +2,8 @@ import time
 
 import pandas as pd
 from tinydb import Query, TinyDB
-#import pyh
-from pyhtml import pyh,tag
+import traceback
+from .pyhtml import pyh,tag
 
 
 def _stampToTime(stamp: int) -> str:
@@ -138,9 +138,10 @@ def dumpToHMTL(dropItemDfByFreq: pd.DataFrame, dropItemDfByaCPI: pd.DataFrame, d
         page << tag.div(id='table') << tag.h3(f'{itemName}',id='item-name')
         page.table << dropItemDfToHTMLByaCPI.head(8).to_html(columns=HTMLColumnByaCPI, index=False)
         page.table << dropItemDfToHTMLByFreq.head(8).to_html(columns=HTMLColumnByFreq, index=False)
-        page.printOut('./html/test.html')
+        page.printOut('./htmlpage/test.html')
     
     except Exception as e:
+        traceback.print_exc()
         return repr(e)
     else:
         return 'OK'

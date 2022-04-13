@@ -62,7 +62,7 @@ coverage.xml
 db/*.json
 
 #html output file
-html/*.html
+htmlpage/*.html
 
 #python future test file
 test_temp.py

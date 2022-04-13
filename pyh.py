@@ -14,7 +14,7 @@ from sys import _getframe, stdout, modules, version
 nOpen={}
 
 nl = '\n'
-doctype = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\n'
+doctype = '<!DOCTYPE html>\n'
 charset = '<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />\n'
 
 tags = ['html', 'body', 'head', 'link', 'meta', 'div', 'p', 'form', 'legend', 
@@ -88,7 +88,7 @@ class Tag(list):
 
     def renderAtt(self):
         result = ''
-        for n, v in self.attributes.iteritems():
+        for n, v in self.attributes.items():
             if n != 'txt' and n != 'open':
                 if n == 'cl': n = 'class'
                 result += ' %s="%s"' % (n, v)
@@ -117,7 +117,7 @@ class PyH(Tag):
     def __init__(self, name='MyPyHPage'):
         self += head()
         self += body()
-        self.attributes = dict(xmlns='http://www.w3.org/1999/xhtml', lang='en')
+        self.attributes = dict(lang='zh')
         self.head += title(name)
 
     def __iadd__(self, obj):
@@ -136,7 +136,7 @@ class PyH(Tag):
         for f in arg: self.head += link(rel='stylesheet', type='text/css', href=f)
     
     def printOut(self,file=''):
-        if file: f = open(file, 'w')
+        if file: f = open(file, 'w', encoding='UTF-8')
         else: f = stdout
         f.write(doctype)
         f.write(self.render())

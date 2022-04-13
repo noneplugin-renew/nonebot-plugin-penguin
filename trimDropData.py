@@ -2,6 +2,7 @@ import time
 
 import pandas as pd
 from tinydb import Query, TinyDB
+import pyh
 
 
 def _stampToTime(stamp: int) -> str:
@@ -131,24 +132,13 @@ def dumpToHMTL(dropItemDfByFreq: pd.DataFrame, dropItemDfByaCPI: pd.DataFrame, d
         dropItemDfToHTMLByFreq = _renameHTMLColumn(
             dropItemDfByFreq, renameDictByFreq)
 
-        with open('./html/test.html', 'w', encoding='utf-8') as htmlfile:
-            print('<!DOCTYPE html>\
-            <html>\
-            <head>\
-                <meta charset="utf-8">\
-                <title>企鹅物流数据查询</title>\
-                <link rel="stylesheet" type="text/css" href="styles.css">\
-            </head>\
-            <body>\
-            <div>', file=htmlfile)
-            print(f'<h3 id="item-name">{itemName}</h3>', file=htmlfile)
-            print(dropItemDfToHTMLByaCPI.head(8).to_html(
-                columns=HTMLColumnByaCPI, index=False), file=htmlfile)
-            print(dropItemDfToHTMLByFreq.head(8).to_html(
-                columns=HTMLColumnByFreq, index=False), file=htmlfile)
-            print('</div>\
-            </body>\
-            </html>', file=htmlfile)
+        page=pyh.PyH('企鹅物流数据查询')
+        page.addCSS('styles.css')
+        page << pyh.div(id='table') << pyh.h3(f'{itemName}',id='item-name')
+        page.table << dropItemDfToHTMLByaCPI.head(8).to_html(columns=HTMLColumnByaCPI, index=False)
+        page.table << dropItemDfToHTMLByFreq.head(8).to_html(columns=HTMLColumnByFreq, index=False)
+        page.printOut('./html/test.html')
+    
     except Exception as e:
         return repr(e)
     else:

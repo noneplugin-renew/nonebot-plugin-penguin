@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO,
 
 
 updateDelta = updateCheck()
-if updateDelta['item']/(60*60*24) > 1 :
+if updateDelta['item']/(60*60*24) > 7 :
     choice=input("item数据库距离上次更新时间已经大于七天，是否更新（y|n）：")
     if choice.upper() == 'Y':
         result = updateItemInfo('items')

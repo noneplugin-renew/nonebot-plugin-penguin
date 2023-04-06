@@ -56,7 +56,7 @@ coverage.xml
 *.pot
 
 #vscode config
-.vscode
+.vscode/*
 
 #tinydb db json
 db/*.json
@@ -66,6 +66,12 @@ htmlpage/*.html
 
 #python future test file
 test_temp.py
+
+#edgedriver
+msedgedriver.exe
+
+#output picture
+pic/*.png
 
 # Django stuff:
 *.log

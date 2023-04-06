@@ -114,7 +114,7 @@ def trimDropData(dbLink: str = './db/infoIdDB.json', jsonLink: str = './db/dropI
 
 
 # 生成输出到html文件的dataframe
-def dumpToHMTL(dropItemDfByFreq: pd.DataFrame, dropItemDfByaCPI: pd.DataFrame, dbLink: str = './db/infoIdDB.json') -> str:
+def dumpToHMTL(dropItemDfByFreq: pd.DataFrame, dropItemDfByaCPI: pd.DataFrame, htmlName: str, dbLink: str = './db/infoIdDB.json') -> str:
     try:
         renameDictByFreq = {'stageName': '关卡', 'apCost': '理智',
                             'frequency': '掉率\u2191', 'aCPI': '单件期望理智'}
@@ -138,7 +138,7 @@ def dumpToHMTL(dropItemDfByFreq: pd.DataFrame, dropItemDfByaCPI: pd.DataFrame, d
         page << tag.div(id='table') << tag.h3(f'{itemName}',id='item-name')
         page.table << dropItemDfToHTMLByaCPI.head(8).to_html(columns=HTMLColumnByaCPI, index=False)
         page.table << dropItemDfToHTMLByFreq.head(8).to_html(columns=HTMLColumnByFreq, index=False)
-        page.printOut('./htmlpage/test.html')
+        page.printOut(f'./htmlpage/{htmlName}.html')
     
     except Exception as e:
         traceback.print_exc()
@@ -148,5 +148,5 @@ def dumpToHMTL(dropItemDfByFreq: pd.DataFrame, dropItemDfByaCPI: pd.DataFrame, d
 
 
 if __name__ == "__main__":
-    result = dumpToHMTL(*trimDropData())
+    result = dumpToHMTL(*trimDropData(),'test')
     print(result)

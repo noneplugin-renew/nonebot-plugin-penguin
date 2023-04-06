@@ -52,5 +52,5 @@ for trimData in trimDataList:
 
 isToHtml=input('是否输出成HTML(y|n)：')
 if isToHtml.upper() == 'Y':
-    resultHtml = dumpToHMTL(*trimDataList)
+    resultHtml = dumpToHMTL(*trimDataList,htmlName=f'{itemId}')
     print(resultHtml)

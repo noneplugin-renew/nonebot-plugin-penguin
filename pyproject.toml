@@ -13,6 +13,8 @@ classifiers = []
 
 [tool.poetry.dependencies]
 python = "^3.10"
+tinydb = "^4.7.1"
+nonebot2 = "^2.0.0rc4"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.10.1"

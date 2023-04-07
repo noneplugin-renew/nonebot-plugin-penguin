@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "Project Name"
-version = "0.1.0"
+name = "nonebot-plugin-penguin"
+version = "0.0.1"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Azide <rukuy@qq.com>"]
 license = "MIT"
 readme = "README.md"
 homepage = ""
@@ -12,7 +12,7 @@ keywords = []
 classifiers = []
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.10.1"

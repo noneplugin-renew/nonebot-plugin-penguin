@@ -15,6 +15,7 @@ classifiers = []
 python = "^3.10"
 tinydb = "^4.7.1"
 nonebot2 = "^2.0.0rc4"
+httpx = "^0.23.3"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.10.1"

@@ -73,7 +73,6 @@ async def test_all(app: App):
     assert penguin.all()[1]["query"]["itemId"] == "30014"
 
 
-@pytest.mark.asyncio
 def test_by_xx_id(app: App):
     from nonebot_plugin_penguin.request import Penguin
 
@@ -93,7 +92,6 @@ def test_by_xx_id(app: App):
     )
 
 
-@pytest.mark.asyncio
 def test_matrix(app: App):
     from nonebot_plugin_penguin.model import Matrix
     from nonebot_plugin_penguin.request import Penguin
@@ -109,7 +107,6 @@ def test_matrix(app: App):
     assert matrix.dict() == get_json("request/fake_matrix_result.json")
 
 
-@pytest.mark.asyncio
 def test_translate(app: App):
     from nonebot_plugin_penguin.request import Penguin
 

@@ -1,20 +1,27 @@
 [tool.poetry]
 name = "nonebot-plugin-penguin"
 version = "0.0.1"
-description = ""
+description = "get penguin data and send from https://penguin-stats.io/"
 authors = ["Azide <rukuy@qq.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = ""
-repository = ""
-documentation = ""
+packages = [{ include = "nonebot_plugin_penguin" }]
+homepage = "https://github.com/AzideCupric/nonebot-plugin-penguin"
+repository = "https://github.com/AzideCupric/nonebot-plugin-penguin"
 keywords = []
-classifiers = []
+classifiers = [
+      "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "License :: OSI Approved :: MIT License",
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 tinydb = "^4.7.1"
-nonebot2 = "^2.0.0rc4"
+nonebot2 = { extras = ["fastapi"], version = "^2.0.0rc4" }
 httpx = "^0.23.3"
 
 [tool.poetry.group.dev.dependencies]
@@ -22,6 +29,13 @@ isort = "^5.10.1"
 black = "^23.1.0"
 nonemoji = "^0.1.2"
 pre-commit = "^3.1.0"
+pytest = "^7.3.0"
+nonebug = {git = "https://github.com/nonebot/nonebug.git"}
+pytest-mock = "^3.10.0"
+pytest-asyncio = "^0.21.0"
+pytest-cov = "^4.0.0"
+respx = "^0.20.1"
+fastapi = "^0.95.0"
 
 [tool.black]
 line-length = 88
@@ -43,3 +57,6 @@ path = "."
 [build-system]
 requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"

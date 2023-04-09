@@ -1,18 +1,24 @@
 from typing import Literal
 
 from nonebot import get_driver
-from pydantic import BaseSettings
+from pydantic import Field, BaseSettings
 
 
 class PlugConfig(BaseSettings):
     penguin_mirrior: Literal["io", "cn"] = "io"
     penguin_show_count: int = 5
 
+    # 以下配置项会自动生成，无需手动配置
+    penguin_site: str = Field(default_factory=str)
+    penguin_cdn: str = Field(default_factory=str)
+    penguin_widget: str = Field(default_factory=str)
+
     # penguin_database: str = ""
     class Config:
         extra = "ignore"
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         match self.penguin_mirrior:
             case "io":
                 self.penguin_site: str = "https://penguin-stats.io"

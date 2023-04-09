@@ -12,4 +12,4 @@ async def test_penguin_data_parser(app: App):
     raw_html = get_file("penguin_data.html")
 
     parser.feed(raw_html)
-    assert '"query":{"stageId":"main_01-07","server":"CN"}' in parser.data
+    assert '"query": { "stageId": "main_01-07", "server": "CN" }' in parser.data

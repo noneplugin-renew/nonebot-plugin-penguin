@@ -22,6 +22,12 @@ isort = "^5.10.1"
 black = "^23.1.0"
 nonemoji = "^0.1.2"
 pre-commit = "^3.1.0"
+pytest = "^7.3.0"
+nonebug = {git = "https://github.com/nonebot/nonebug.git"}
+pytest-mock = "^3.10.0"
+pytest-asyncio = "^0.21.0"
+pytest-cov = "^4.0.0"
+respx = "^0.20.1"
 
 [tool.black]
 line-length = 88

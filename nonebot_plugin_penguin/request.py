@@ -1,4 +1,5 @@
 import json
+import time
 from typing import Any, Union, Literal
 
 from httpx import AsyncClient
@@ -17,9 +18,11 @@ lang_map = {"cn": "zh", "kr": "ko", "us": "en", "jp": "ja"}
 
 class Penguin:
     raw: tuple[T_Query, dict[str, Any]]
-    _cache: tuple[T_Query, dict[str, Any]]
+    cache: tuple[T_Query, tuple, int] = (None, (), 0)  # type: ignore
 
-    async def fetch(self, server: T_Server, type: T_Query, ids: tuple[str]) -> int:
+    async def fetch(
+        self, server: T_Server, type: T_Query, ids: tuple[str] | tuple[str, str]
+    ) -> int:
         """请求penguin-stats的widget数据, 存储到raw中
 
         参数:
@@ -33,8 +36,18 @@ class Penguin:
         返回值:
             html状态码
         """
+        # 一分钟内需要请求的数据与当前缓存的数据相同时，直接返回304表示使用缓存
+        if (
+            self.cache[0] == type
+            and self.cache[1] == ids
+            and int(time.time()) - self.cache[2] < 60
+        ):
+            return 304
+
         async with AsyncClient() as client:
-            widget_url = f"{plugin_config.penguin_widget}/{server.upper()}/{type}"
+            widget_url = (
+                f"{plugin_config.penguin_widget}/result/{server.upper()}/{type}"
+            )
             match type:
                 case "item" | "stage":
                     widget_url += f"/{ids[0]}"
@@ -44,19 +57,20 @@ class Penguin:
                     ), "当type为exact时, ids需要(StageId, ItemId)的长度为2的tuple)"
                     widget_url += f"/{ids[0]}/{ids[1]}"
 
-            res = await client.get(plugin_config.penguin_widget)
+            res = await client.get(widget_url)
             html_obj = PenguinDataParser()
             html_obj.feed(res.text)
+            assert html_obj.data
             self.raw = (type, json.loads(html_obj.data))
+        # 请求了新的数据，更新_cache
+        self.cache = (type, ids, int(time.time()))
 
         return res.status_code
 
     def all(self) -> tuple[T_Query, dict[str, Any]]:
         """返回一个元组，包含请求的类型和请求的结果"""
-        if not self._cache:
-            self._cache = self.raw
 
-        return self._cache
+        return self.raw
 
     def by_item_id(self, item_id: str) -> Item:
         """返回和item_id匹配的第一个元素"""
@@ -86,27 +100,29 @@ class Penguin:
         _cache = raw[1].get("matrix")
         assert isinstance(_cache, list), "matrix的值应该是列表而非其他！"
 
-        def gen_dict(raw_item: dict[str, str | int]):
+        def gen_dict(raw_item: dict[str, str | int]) -> Matrix:
             assert isinstance(
                 (stage_id := raw_item.get("stageId")), str
             ), "stageId的值应该是字符串而非其他！"
             stage = self.by_stage_id(stage_id)
+
             assert isinstance(
                 (item_id := raw_item.get("itemId")), str
             ), "itemId的值应该是字符串而非其他！"
             item = self.by_item_id(item_id)
-            assert isinstance(
-                (zone_id := raw_item.get("zoneId")), str
-            ), "zoneId的值应该是字符串而非其他！"
-            zone = self.by_zone_id(zone_id)
+
+            zone = self.by_zone_id(stage.zoneId)
+
             assert isinstance(
                 (quantity := raw_item.get("quantity")), int
             ), "quantity的值应该是整数而非其他！"
             assert isinstance(
                 (times := raw_item.get("times")), int
             ), "times的值应该是整数而非其他！"
+
             percentage = round(quantity / times * 100, 2)
             apPPR = round(stage.apCost / percentage, 2)
+
             return Matrix(
                 stage=stage,
                 zone=zone,

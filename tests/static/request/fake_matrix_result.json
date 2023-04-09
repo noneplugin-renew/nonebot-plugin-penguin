@@ -1,0 +1,38 @@
+{
+  "stage": {
+    "stageId": "act16d5_10_perm",
+    "zoneId": "permanent_sidestory_8_zone1",
+    "code_i18n": {
+      "en": "WR-10",
+      "ja": "WR-10",
+      "ko": "WR-10",
+      "zh": "WR-10"
+    },
+    "apCost": 18,
+    "minClearTime": 251000
+  },
+  "zone": {
+    "zoneId": "permanent_sidestory_8_zone1",
+    "zoneName_i18n": {
+      "en": "Who Is Real - Side Story",
+      "ja": "画中人・サイドストーリー",
+      "ko": "화중인 사이드",
+      "zh": "画中人・别传"
+    },
+    "type": "ACTIVITY_PERMANENT"
+  },
+  "item": {
+    "itemId": "30014",
+    "name_i18n": {
+      "en": "Orriock Concentration",
+      "ja": "上級源岩",
+      "ko": "정제 원암",
+      "zh": "提纯源岩"
+    },
+    "spriteCoord": [1, 1]
+  },
+  "percentage": 4.56,
+  "apPPR": 3.95,
+  "quantity": 175,
+  "times": 3837
+}

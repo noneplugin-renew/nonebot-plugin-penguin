@@ -14,15 +14,10 @@
 
 _✨ 向企鹅物流查询关卡掉落物数据 ✨_
 
-<a href="./LICENSE">
-    <img src="https://img.shields.io/github/license/owner/nonebot-plugin-penguin.svg" alt="license">
-</a>
-
-<a href="https://pypi.python.org/pypi/nonebot-plugin-penguin">
-    <img src="https://img.shields.io/pypi/v/nonebot-plugin-penguin.svg" alt="pypi">
-</a>
-
-<img src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="python">
+[![license](https://img.shields.io/github/license/AzideCupric/nonebot-plugin-penguin)](https://github.com/AzideCupric/nonebot-plugin-penguin/blob/main/LICENSE)
+[![action](https://img.shields.io/github/actions/workflow/status/AzideCupric/nonebot-plugin-penguin/test.yml?branch=main)](https://github.com/AzideCupric/nonebot-plugin-penguin/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/AzideCupric/nonebot-plugin-penguin/branch/main/graph/badge.svg?token=QCFIODJOOA)](https://codecov.io/gh/AzideCupric/nonebot-plugin-penguin)
+[![python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/release/python-3100/)
 
 </div>
 

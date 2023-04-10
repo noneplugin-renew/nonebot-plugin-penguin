@@ -18,7 +18,7 @@ def matrix_filter(
 ) -> list[Matrix]:
     match mode:
         case "all":
-            return matrixs
+            return [matrix for matrix in matrixs if matrix.quantity > ignore_threshold]
         case "only_open":
             return [
                 matrix
@@ -58,6 +58,7 @@ def matrix_export(
                 "apPPR": x.apPPR,
                 "quantity": x.quantity,
                 "time": x.times,
+                "opening": True if not x.end else False,
             },
             trimed_matrixs,
         )

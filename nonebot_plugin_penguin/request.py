@@ -1,19 +1,13 @@
 import json
 import time
-from typing import Any, Union, Literal
+from typing import Any
 
 from httpx import AsyncClient
 
 from .config import plugin_config
 from .utils import PenguinDataParser
 from .model import Item, Zone, Stage, Matrix
-
-T_Server = Literal["cn", "kr", "us", "jp"]
-T_Query = Literal["item", "stage", "exact"]
-T_Model = Union[Item, Stage, Zone, Matrix]
-T_Respond = Literal["item", "stage", "zone", "matrix"]
-
-lang_map = {"cn": "zh", "kr": "ko", "us": "en", "jp": "ja"}
+from .types import T_Query, T_Server, T_Respond, lang_map
 
 
 class Penguin:

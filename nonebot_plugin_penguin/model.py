@@ -29,3 +29,5 @@ class Matrix(BaseModel):
     apPPR: float
     quantity: int
     times: int
+    start: int
+    end: int | None

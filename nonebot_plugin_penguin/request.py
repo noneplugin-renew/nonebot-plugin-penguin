@@ -116,6 +116,8 @@ class Penguin:
 
             percentage = round(quantity / times * 100, 2)
             apPPR = round(stage.apCost / percentage, 2)
+            start: int = raw_item.get("start", "")
+            end: int | None = raw_item.get("end", None)
 
             return Matrix(
                 stage=stage,
@@ -125,6 +127,8 @@ class Penguin:
                 apPPR=apPPR,
                 quantity=quantity,
                 times=times,
+                start=start,
+                end=end,
             )
 
         _cache = map(gen_dict, _cache)

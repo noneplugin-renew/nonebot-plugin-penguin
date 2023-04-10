@@ -2,6 +2,10 @@
   "python.testing.pytestArgs": ["tests"],
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
+<<<<<<< HEAD
   "python.formatting.provider": "black",
   "liveServer.settings.port": 7138
+=======
+  "python.formatting.provider": "black"
+>>>>>>> 4311f3d (:construction: 初步完成matrix export)
 }

@@ -11,7 +11,7 @@ from nonebot import require
 @pytest.mark.asyncio
 async def test_render(app: App):
     require("nonebot_plugin_htmlrender")
-    from nonebot_plugin_htmlrender import template_to_pic
+    from nonebot_plugin_htmlrender import template_to_pic, template_to_html
 
     async def render():
         template_path = str(
@@ -32,6 +32,19 @@ async def test_render(app: App):
             simple_count = "99"
 
         stages = [Stage(name=str(i)) for i in range(10)]
+
+        t = {
+            "item_name": "测试",
+            "item_icon_css": "background-image: url(./img/1.png);",
+            "stages": stages,
+            "all_stage": "10",
+        }
+
+        html = await template_to_html(
+            template_path=template_path, template_name=template_name, **t
+        )
+        with open("temp_html.html", "w", encoding="utf-8") as f:
+            f.write(html)
         # 设置模板
         # 模板中本地资源地址需要相对于 base_url 或使用绝对路径
         pic = await template_to_pic(
@@ -39,7 +52,7 @@ async def test_render(app: App):
             template_name=template_name,
             templates={
                 "item_name": "测试",
-                "item_icon_css": "{background-image: url(./img/1.png);}",
+                "item_icon_css": "background-image: url(./img/1.png);",
                 "stages": stages,
                 "all_stage": "10",
             },

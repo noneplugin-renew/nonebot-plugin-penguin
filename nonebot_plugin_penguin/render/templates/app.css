@@ -23,6 +23,7 @@
   font-family: benderregular, SF Mono, Droid Sans Mono, Ubuntu Mono, Consolas,
     Courier New, Courier, monospace !important;
   letter-spacing: 0.03rem;
+  text-align: center;
 }
 
 .monospace-pure {

@@ -1,6 +1,9 @@
 body {
   background-color: rgba(0, 0, 0, 1);
+<<<<<<< HEAD
   margin: 0px;
+=======
+>>>>>>> a900b6d (:construction: 添加表格渲染成图片的测试)
 }
 .v-tooltip__content {
   position: absolute;
@@ -51,7 +54,11 @@ body {
   display: block;
   margin-block-start: 0px;
   margin-block-end: 0;
+<<<<<<< HEAD
   margin-inline-start: auto;
+=======
+  margin-inline-start: 125px;
+>>>>>>> a900b6d (:construction: 添加表格渲染成图片的测试)
   margin-inline-end: 0px;
   font-weight: bold;
 }

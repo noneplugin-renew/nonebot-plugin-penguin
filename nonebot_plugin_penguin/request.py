@@ -1,5 +1,4 @@
 import json
-import time
 from typing import Any
 
 from httpx import AsyncClient
@@ -12,7 +11,6 @@ from .types import T_Query, T_Server, T_Respond, lang_map
 
 class Penguin:
     raw: tuple[T_Query, dict[str, Any]]
-    cache: tuple[T_Query, tuple, int] = (None, (), 0)  # type: ignore
 
     async def fetch(
         self, server: T_Server, type: T_Query, ids: tuple[str] | tuple[str, str]
@@ -30,14 +28,6 @@ class Penguin:
         返回值:
             html状态码
         """
-        # 一分钟内需要请求的数据与当前缓存的数据相同时，直接返回304表示使用缓存
-        if (
-            self.cache[0] == type
-            and self.cache[1] == ids
-            and int(time.time()) - self.cache[2] < 60
-        ):
-            return 304
-
         async with AsyncClient() as client:
             widget_url = (
                 f"{plugin_config.penguin_widget}/result/{server.upper()}/{type}"
@@ -56,8 +46,6 @@ class Penguin:
             html_obj.feed(res.text)
             assert html_obj.data
             self.raw = (type, json.loads(html_obj.data))
-        # 请求了新的数据，更新_cache
-        self.cache = (type, ids, int(time.time()))
 
         return res.status_code
 
@@ -116,8 +104,8 @@ class Penguin:
 
             percentage = round(quantity / times * 100, 2)
             apPPR = round(stage.apCost / percentage, 2)
-            start: int = raw_item.get("start", "")
-            end: int | None = raw_item.get("end", None)
+            start: int = raw_item.get("start", 0)  # type: ignore
+            end: int | None = raw_item.get("end", None)  # type: ignore
 
             return Matrix(
                 stage=stage,

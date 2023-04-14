@@ -1,5 +1,6 @@
 body {
   background-color: rgba(0, 0, 0, 1);
+  margin: 0px;
 }
 .v-tooltip__content {
   position: absolute;

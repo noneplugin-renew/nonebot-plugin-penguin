@@ -13,6 +13,8 @@ async def test_render(app: App):
     require("nonebot_plugin_htmlrender")
     from nonebot_plugin_htmlrender import template_to_pic, template_to_html
 
+    from nonebot_plugin_penguin.render import ItemIcon
+
     async def render():
         template_path = str(
             Path(__file__).parent.parent
@@ -26,16 +28,17 @@ async def test_render(app: App):
         @dataclass
         class Stage:
             name: str
+            zone: str
             percent = "100%"
             ap_cost = "40"
             rop_count = "3"
             simple_count = "99"
 
-        stages = [Stage(name=str(i)) for i in range(10)]
+        stages = [Stage(name=str(i) + "-1", zone=str(i) + "HH") for i in range(10)]
 
         t = {
             "item_name": "测试",
-            "item_icon_css": "background-image: url(./img/1.png);",
+            "item_icon_css": ItemIcon.style((0, 0)),
             "stages": stages,
             "all_stage": "10",
         }

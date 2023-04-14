@@ -26,6 +26,10 @@
   text-align: center;
 }
 
+.left {
+  text-align: left;
+}
+
 .monospace-pure {
   font-family: SF Mono, Droid Sans Mono, Ubuntu Mono, Consolas, Courier New,
     Courier, monospace;

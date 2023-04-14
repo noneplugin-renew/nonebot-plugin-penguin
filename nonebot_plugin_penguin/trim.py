@@ -1,10 +1,7 @@
-from typing import Any, Literal
+from typing import Any
 
 from .model import Matrix
-from .types import T_Server, lang_map
-
-T_Sorted_Key = Literal["percentage", "apPPR"]
-T_Filter_Mode = Literal["all", "only_open", "only_close"]
+from .types import T_Server, T_Sorted_Key, T_Filter_Mode, lang_map
 
 
 def matrix_sort(

@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
+from .types import T_Lang, T_Query, T_Server, T_Sorted_Key, T_Filter_Mode
+
 
 class Item(BaseModel):
     itemId: str
@@ -31,3 +33,14 @@ class Matrix(BaseModel):
     times: int
     start: int
     end: int | None
+
+
+class Request(BaseModel):
+    server: T_Server = "cn"
+    type: T_Query
+    ids: tuple[str, str] | tuple[str]
+    lang: T_Lang = "zh"
+    sort_by: T_Sorted_Key = "percentage"
+    filter_by: T_Filter_Mode = "only_open"
+    ignore_threshold: int = 100
+    reverse: bool = False

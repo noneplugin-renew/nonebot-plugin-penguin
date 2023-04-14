@@ -34,21 +34,31 @@ class Matrix(BaseModel):
     start: int
     end: int | None
 
-    def export(self, lang) -> dict[str, str | list[int] | float]:
-        return dict(
-            stage_name=self.stage.code_i18n[lang],
-            zone=self.zone.zoneName_i18n[lang],
-            item=self.item.name_i18n[lang],
-            sprite_coord=self.item.spriteCoord,
-            percentage=str(self.percentage) + "%",
-            apPPR=self.apPPR,
-            quantity=self.quantity,
-            times=self.times,
-            opening=True if self.end else False,
-        )
+    def export(self, mode: T_Query, lang: T_Lang):
+        match mode:
+            case "item":
+                return RenderByItem(
+                    stage_name=self.stage.code_i18n[lang],
+                    zone=self.zone.zoneName_i18n[lang],
+                    percent=str(self.percentage) + "%",
+                    ap_ppr=str(self.apPPR),
+                    rop_count=str(self.quantity),
+                    simple_count=str(self.times),
+                    open=True if self.end else False,
+                )
+            case "stage" | "exact":
+                return RenderByStage(
+                    item_name=self.item.name_i18n[lang],
+                    sprite_coord=self.item.spriteCoord,
+                    percent=str(self.percentage) + "%",
+                    ap_ppr=str(self.apPPR),
+                    rop_count=str(self.quantity),
+                    simple_count=str(self.times),
+                )
 
 
 class Request(BaseModel):
+    name: str  # 关卡或者掉落物名，两者都有时，关卡在前，空格隔开
     server: T_Server = "cn"
     type: T_Query
     ids: tuple[str, str] | tuple[str]
@@ -57,3 +67,22 @@ class Request(BaseModel):
     filter_by: T_Filter_Mode = "only_open"
     ignore_threshold: int = 100
     reverse: bool = False
+
+
+class RenderByItem(BaseModel):
+    stage_name: str
+    zone: str
+    percent: str
+    ap_ppr: str
+    rop_count: str
+    simple_count: str
+    open: bool
+
+
+class RenderByStage(BaseModel):
+    item_name: str
+    sprite_coord: list[int]
+    percent: str
+    ap_ppr: str
+    rop_count: str
+    simple_count: str

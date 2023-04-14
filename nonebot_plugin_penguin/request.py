@@ -5,16 +5,14 @@ from httpx import AsyncClient
 
 from .config import plugin_config
 from .utils import PenguinDataParser
-from .model import Item, Zone, Stage, Matrix
+from .model import Item, Zone, Stage, Matrix, Request
 from .types import T_Query, T_Server, T_Respond, lang_map
 
 
 class Penguin:
     raw: tuple[T_Query, dict[str, Any]]
 
-    async def fetch(
-        self, server: T_Server, type: T_Query, ids: tuple[str] | tuple[str, str]
-    ) -> int:
+    async def fetch(self, request: Request) -> int:
         """请求penguin-stats的widget数据, 存储到raw中
 
         参数:
@@ -30,22 +28,22 @@ class Penguin:
         """
         async with AsyncClient() as client:
             widget_url = (
-                f"{plugin_config.penguin_widget}/result/{server.upper()}/{type}"
+                f"{plugin_config.penguin_widget}/result/{request.server.upper()}/{type}"
             )
             match type:
                 case "item" | "stage":
-                    widget_url += f"/{ids[0]}"
+                    widget_url += f"/{request.ids[0]}"
                 case "exact":
                     assert (
-                        len(ids) == 2
+                        len(request.ids) == 2
                     ), "当type为exact时, ids需要(StageId, ItemId)的长度为2的tuple)"
-                    widget_url += f"/{ids[0]}/{ids[1]}"
+                    widget_url += f"/{request.ids[0]}/{request.ids[1]}"
 
             res = await client.get(widget_url)
             html_obj = PenguinDataParser()
             html_obj.feed(res.text)
             assert html_obj.data
-            self.raw = (type, json.loads(html_obj.data))
+            self.raw = (request.type, json.loads(html_obj.data))
 
         return res.status_code
 

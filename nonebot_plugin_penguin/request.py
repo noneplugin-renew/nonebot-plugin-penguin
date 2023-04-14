@@ -124,12 +124,12 @@ class Penguin:
         match type:
             case "item":
                 item = self.by_item_id(id)
-                return item.name_i18n.get(lang_map[server.lower()], id)
+                return item.name_i18n.get(lang_map[server], id)
             case "stage":
                 stage = self.by_stage_id(id)
-                return stage.code_i18n.get(lang_map[server.lower()], id)
+                return stage.code_i18n.get(lang_map[server], id)
             case "zone":
                 zone = self.by_zone_id(id)
-                return zone.zoneName_i18n.get(lang_map[server.lower()], id)
+                return zone.zoneName_i18n.get(lang_map[server], id)
             case _:
                 return "暂不支持"

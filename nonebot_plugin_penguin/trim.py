@@ -1,7 +1,4 @@
-from typing import Any
-
-from .types import lang_map
-from .model import Matrix, Request
+from .model import Matrix, Request, RenderByItem, RenderByStage
 
 
 def matrix_sort(matrixs: list[Matrix], request: Request) -> list[Matrix]:
@@ -32,14 +29,15 @@ def matrix_filter(matrixs: list[Matrix], request: Request) -> list[Matrix]:
             ]
 
 
-def matrix_export(matrixs: list[Matrix], request: Request) -> list[dict[str, Any]]:
+def matrix_export(
+    matrixs: list[Matrix], request: Request
+) -> list[RenderByItem | RenderByStage]:
     trimed_matrixs = matrix_filter(matrixs, request)
     trimed_matrixs = matrix_sort(matrixs, request)
-    _lang = lang_map[request.lang]
 
     return list(
         map(
-            lambda x: x.export(_lang),
+            lambda x: x.export(lang=request.lang, mode=request.type),
             trimed_matrixs,
         )
     )

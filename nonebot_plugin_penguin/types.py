@@ -10,4 +10,4 @@ T_Respond = Literal["item", "stage", "zone", "matrix"]
 T_Sorted_Key = Literal["percentage", "apPPR"]
 T_Filter_Mode = Literal["all", "only_open", "only_close"]
 
-lang_map = {"cn": "zh", "kr": "ko", "us": "en", "jp": "ja"}
+lang_map: dict[T_Server, T_Lang] = {"cn": "zh", "kr": "ko", "us": "en", "jp": "ja"}

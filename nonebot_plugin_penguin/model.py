@@ -34,6 +34,19 @@ class Matrix(BaseModel):
     start: int
     end: int | None
 
+    def export(self, lang) -> dict[str, str | list[int] | float]:
+        return dict(
+            stage_name=self.stage.code_i18n[lang],
+            zone=self.zone.zoneName_i18n[lang],
+            item=self.item.name_i18n[lang],
+            sprite_coord=self.item.spriteCoord,
+            percentage=str(self.percentage) + "%",
+            apPPR=self.apPPR,
+            quantity=self.quantity,
+            times=self.times,
+            opening=True if self.end else False,
+        )
+
 
 class Request(BaseModel):
     server: T_Server = "cn"

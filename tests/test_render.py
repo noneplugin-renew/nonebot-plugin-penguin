@@ -1,10 +1,8 @@
-import io
 from pathlib import Path
 from dataclasses import dataclass
 
 import respx
 import pytest
-from PIL import Image
 from flaky import flaky
 from nonebug import App
 from httpx import Response
@@ -124,7 +122,7 @@ async def test_render(app: App):
             f.write(html)
         # 设置模板
         # 模板中本地资源地址需要相对于 base_url 或使用绝对路径
-        pic = await template_to_pic(
+        await template_to_pic(
             template_path=template_path,
             template_name=template_name,
             templates=t,
@@ -135,7 +133,7 @@ async def test_render(app: App):
             wait=2,
         )
 
-        a = Image.open(io.BytesIO(pic))
-        a.show("template2pic.png")
+        # a = Image.open(io.BytesIO(pic))
+        # a.show("template2pic.png")
 
     await render()

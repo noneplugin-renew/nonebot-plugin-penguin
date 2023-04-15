@@ -23,8 +23,8 @@ async def html_to_pic_with_selector(
     require("nonebot_plugin_htmlrender")
     from nonebot_plugin_htmlrender import get_new_page
 
-    if not template_path and "file://" not in template_path:
-        raise Exception("template_path 应该为 file:///path/to/template")
+    if "file://" not in template_path:
+        raise ValueError("template_path 应该为 file:///path/to/template")
     async with get_new_page(**pages) as page:
         await page.goto(template_path)
         await page.set_content(html, wait_until="networkidle")
@@ -68,8 +68,6 @@ async def render(request: Request):
                 sort_by=request.sort_by,
                 icon=ItemIcon,
             )
-        case _:
-            raise NotImplementedError(f"未支持的类型{request.type}")
 
     html = await template_to_html(
         template_name=template_name,
@@ -83,7 +81,7 @@ async def render(request: Request):
     return await html_to_pic_with_selector(
         html=html,
         selector="body > div",
-        template_path=template_path.as_posix(),
+        template_path=f"file://{template_path.as_posix()}",
         viewport={"width": 1000, "height": 1000},
         base_url=f"file://{template_path}",
         wait=2,

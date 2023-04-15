@@ -34,7 +34,7 @@ def test_export(app: App):
     assert export2[1].item_name == "基础作战记录"
     assert export2[1].sprite_coord == [0, 0]
     assert export2[1].percent == "124.0%"
-    assert export2[1].ap_ppr == "0.05"
+    assert export2[1].ap_cost == "0.05"
     assert export2[1].rop_count == "117270412"
     assert export2[1].simple_count == "94572340"
 

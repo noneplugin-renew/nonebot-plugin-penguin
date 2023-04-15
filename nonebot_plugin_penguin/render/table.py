@@ -10,6 +10,7 @@ from ..config import plugin_config
 from .item_sprite import Coord, ItemIcon
 
 template_path = Path(__file__).parent / "templates"
+<<<<<<< HEAD
 
 
 async def html_to_pic_with_selector(
@@ -33,6 +34,8 @@ async def html_to_pic_with_selector(
             type=type,
         )
     return img_raw
+=======
+>>>>>>> e958020 (:white_check_mark: 调整旧的测试)
 
 
 async def render(request: Request):

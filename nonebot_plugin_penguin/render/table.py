@@ -1,18 +1,38 @@
 from pathlib import Path
+from typing import Literal
 
 from nonebot import require
 
-from ..model import Request
+from ..types import Request
 from ..request import Penguin
 from ..trim import matrix_export
 from ..config import plugin_config
 from .item_sprite import Coord, ItemIcon
 
-require("nonebot-plugin-htmlrender")
-from nonebot_plugin_htmlrender import template_to_pic  # noqa: E402
-
-_cache = None
 template_path = Path(__file__).parent / "templates"
+
+
+async def html_to_pic_with_selector(
+    html: str,
+    selector: str,
+    wait: int = 0,
+    template_path: str = "",
+    type: Literal["jpeg", "png"] = "png",
+    **pages,
+) -> bytes:
+    require("nonebot_plugin_htmlrender")
+    from nonebot_plugin_htmlrender import get_new_page
+
+    if not template_path and "file://" not in template_path:
+        raise Exception("template_path 应该为 file:///path/to/template")
+    async with get_new_page(**pages) as page:
+        await page.goto(template_path)
+        await page.set_content(html, wait_until="networkidle")
+        await page.wait_for_timeout(wait)
+        img_raw = await page.locator(selector).screenshot(
+            type=type,
+        )
+    return img_raw
 
 
 async def render(request: Request):
@@ -20,6 +40,9 @@ async def render(request: Request):
     status_code = await penguin.fetch(request)
     if status_code != 200:
         return None
+
+    require("nonebot_plugin_htmlrender")
+    from nonebot_plugin_htmlrender import template_to_html
 
     match request.type:
         case "item":
@@ -38,13 +61,17 @@ async def render(request: Request):
             template_name = ""
             template_data = {}
 
-    return await template_to_pic(
+    html = await template_to_html(
         template_name=template_name,
         template_path=template_path.as_posix(),
-        templates=template_data,
-        pages={
-            "viewport": {"width": 440, "height": 300},
-            "base_url": f"file://{template_path}",
-        },
+        **template_data,
+    )
+
+    return await html_to_pic_with_selector(
+        html=html,
+        selector="body > div",
+        template_path=template_path.as_posix(),
+        viewport={"width": 500, "height": 300},
+        base_url=f"file://{template_path}",
         wait=2,
     )

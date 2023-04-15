@@ -6,7 +6,7 @@ from .utils import get_json
 def test_export(app: App):
     from nonebot_plugin_penguin.request import Penguin
     from nonebot_plugin_penguin.trim import matrix_export
-    from nonebot_plugin_penguin.types import Request, RenderByItem
+    from nonebot_plugin_penguin.types import Request, RenderByItem, RenderByStage
 
     penguin = Penguin()
     # item export
@@ -19,11 +19,24 @@ def test_export(app: App):
     assert export[1].stage_name == "11-18"
     assert export[1].zone == "第十一章 (磨难)"
     assert export[1].percent == "5.45%"
-    assert export[1].ap_ppr == "3.85"
+    assert export[1].ap_cost == "3.85"
     assert export[1].rop_count == "3106"
     assert export[1].simple_count == "56995"
     assert export[1].open is True
     # stage export
+    penguin2 = Penguin()
+    penguin2.raw = ("stage", get_json("request/fake_stage_main_01-07.json"))
+    matrixs2 = penguin2.matrix()
+    request2 = Request(name="test", type="stage", ids=("main_01-07",), reverse=True)
+    export2 = matrix_export(matrixs2, request2)
+    assert len(export2) == 19
+    assert isinstance(export2[1], RenderByStage)
+    assert export2[1].item_name == "基础作战记录"
+    assert export2[1].sprite_coord == [0, 0]
+    assert export2[1].percent == "124.0%"
+    assert export2[1].ap_ppr == "0.05"
+    assert export2[1].rop_count == "117270412"
+    assert export2[1].simple_count == "94572340"
 
 
 def test_sort(app: App):

@@ -4,7 +4,7 @@ from ..types import Coord
 class ItemIcon:
     size: int = 183
     dimensions: tuple = (1098, 3111)
-    pic: str = "sprite.20221011514.png"
+    pic: str = "sprite.202210111514.png"
     previous_size: int = 60
 
     @classmethod

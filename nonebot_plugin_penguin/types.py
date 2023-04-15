@@ -52,7 +52,7 @@ class Matrix(BaseModel):
                     stage_name=self.stage.code_i18n[lang],
                     zone=self.zone.zoneName_i18n[lang],
                     percent=str(self.percentage) + "%",
-                    ap_ppr=str(self.apPPR),
+                    ap_cost=str(self.apPPR),
                     rop_count=str(self.quantity),
                     simple_count=str(self.times),
                     open=True if not self.end else False,
@@ -77,14 +77,14 @@ class Request(BaseModel):
     sort_by: T_Sorted_Key = "percentage"
     filter_by: T_Filter_Mode = "only_open"
     ignore_threshold: int = 100
-    reverse: bool = False
+    reverse: bool = True
 
 
 class RenderByItem(BaseModel):
     stage_name: str
     zone: str
     percent: str
-    ap_ppr: str
+    ap_cost: str
     rop_count: str
     simple_count: str
     open: bool

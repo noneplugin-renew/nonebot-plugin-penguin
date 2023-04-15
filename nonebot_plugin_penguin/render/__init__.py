@@ -1,3 +1,3 @@
-from .item_sprite import ItemIcon
+from .table import render
 
-__all__ = ["ItemIcon"]
+__all__ = ["render"]

@@ -2,18 +2,43 @@ import io
 from pathlib import Path
 from dataclasses import dataclass
 
+import respx
 import pytest
 from PIL import Image
 from nonebug import App
+from httpx import Response
 from nonebot import require
 
+from .utils import get_file
 
+
+@pytest.mark.asyncio
+@respx.mock
+async def test_render_item(app: App):
+    from nonebot_plugin_penguin.render import render
+    from nonebot_plugin_penguin.types import Request
+    from nonebot_plugin_penguin.config import plugin_config
+
+    url1 = f"{plugin_config.penguin_widget}/result/CN/item/30014"
+    url1_router = respx.get(url1)
+    url1_router.mock(Response(200, text=get_file("request/fake_item_30014.html")))
+
+    request = Request(name="test", type="item", ids=("30014",))
+
+    pic_bytes = await render(request)
+    assert pic_bytes
+    assert pic_bytes.startswith(b"\x89PNG")
+    # a = Image.open(io.BytesIO(pic_bytes))
+    # a.show("template2pic.png")
+
+
+@pytest.mark.skip
 @pytest.mark.asyncio
 async def test_render(app: App):
     require("nonebot_plugin_htmlrender")
     from nonebot_plugin_htmlrender import template_to_pic, template_to_html
 
-    from nonebot_plugin_penguin.render import ItemIcon
+    from nonebot_plugin_penguin.render.item_sprite import ItemIcon
 
     async def render():
         template_path = str(

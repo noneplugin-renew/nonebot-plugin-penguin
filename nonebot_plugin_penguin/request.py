@@ -64,6 +64,9 @@ class Penguin:
         items = self.all()[1].get("items")
         assert isinstance(items, list), "items的值应该是列表而非其他！"
         item_dict = next((item for item in items if item.get("itemId") == item_id), {})
+        if item_dict.get("spriteCoord") is None:
+            # 家具没有spriteCoord，这里手动指定一个
+            item_dict["spriteCoord"] = [1, 9]
         return Item.parse_obj(item_dict)
 
     def by_stage_id(self, stage_id: str) -> Stage:

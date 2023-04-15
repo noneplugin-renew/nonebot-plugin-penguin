@@ -6,37 +6,28 @@ from .utils import get_json
 def test_export(app: App):
     from nonebot_plugin_penguin.request import Penguin
     from nonebot_plugin_penguin.trim import matrix_export
+    from nonebot_plugin_penguin.types import Request, RenderByItem
 
     penguin = Penguin()
+    # item export
     penguin.raw = ("item", get_json("request/fake_item_30014.json"))
-
     matrixs = penguin.matrix()
-
-    export = matrix_export(matrixs, "cn", "percentage", "only_open", True)
+    request = Request(name="test", type="item", ids=("30014",), reverse=True)
+    export = matrix_export(matrixs, request)
     assert len(export) == 11
-    assert export[0].keys() == {
-        "stage_name",
-        "item_name",
-        "zone_name",
-        "sprite_coord",
-        "percentage",
-        "apPPR",
-        "quantity",
-        "time",
-        "opening",
-    }
-    assert export[1]["stage_name"] == "11-18"
-    assert export[1]["item_name"] == "提纯源岩"
-    assert export[1]["zone_name"] == "第十一章 (磨难)"
-    assert export[1]["sprite_coord"] == [1, 1]
-    assert export[1]["percentage"] == "5.45%"
-    assert export[1]["apPPR"] == 3.85
-    assert export[1]["quantity"] == 3106
-    assert export[1]["time"] == 56995
-    assert export[1]["opening"] is True
+    assert isinstance(export[1], RenderByItem)
+    assert export[1].stage_name == "11-18"
+    assert export[1].zone == "第十一章 (磨难)"
+    assert export[1].percent == "5.45%"
+    assert export[1].ap_ppr == "3.85"
+    assert export[1].rop_count == "3106"
+    assert export[1].simple_count == "56995"
+    assert export[1].open is True
+    # stage export
 
 
 def test_sort(app: App):
+    from nonebot_plugin_penguin.types import Request
     from nonebot_plugin_penguin.request import Penguin
     from nonebot_plugin_penguin.trim import matrix_sort
 
@@ -44,8 +35,11 @@ def test_sort(app: App):
     penguin.raw = ("item", get_json("request/fake_item_30014.json"))
 
     matrixs = penguin.matrix()
+    request = Request(
+        name="test", type="item", ids=("30014",), reverse=True, sort_by="apPPR"
+    )
 
-    sort = matrix_sort(matrixs, "apPPR", reverse=True)
+    sort = matrix_sort(matrixs, request)
     assert len(sort) == 11
     assert sort[0].apPPR == 5.15
     assert sort[1].apPPR == 4.94
@@ -59,9 +53,9 @@ def test_sort(app: App):
     assert sort[9].apPPR == 3.71
     assert sort[10].apPPR == 3.52
 
-    sort = matrix_sort(matrixs, "percentage")
-    for i in sort:
-        print(i.percentage)
+    request.sort_by = "percentage"
+    request.reverse = False
+    sort = matrix_sort(matrixs, request)
     assert len(sort) == 11
     assert sort[0].percentage == 4.04
     assert sort[1].percentage == 4.08
@@ -77,6 +71,7 @@ def test_sort(app: App):
 
 
 def test_filter(app: App):
+    from nonebot_plugin_penguin.types import Request
     from nonebot_plugin_penguin.request import Penguin
     from nonebot_plugin_penguin.trim import matrix_filter
 
@@ -84,36 +79,47 @@ def test_filter(app: App):
     penguin.raw = ("item", get_json("request/fake_item_30014.json"))
 
     matrixs = penguin.matrix()
+    request = Request(name="test", type="item", ids=("30014",), ignore_threshold=0)
 
-    filter = matrix_filter(matrixs, "only_open", 0)
+    filter = matrix_filter(matrixs, request)
     assert len(filter) == 11
     for i in filter:
         assert i.end is None
 
-    filter = matrix_filter(matrixs, "only_close", 0)
+    request.filter_by = "only_close"
+    filter = matrix_filter(matrixs, request)
     assert len(filter) == 0
 
-    filter = matrix_filter(matrixs, "all", 0)
+    request.filter_by = "all"
+    filter = matrix_filter(matrixs, request)
     assert len(filter) == 11
 
-    filter = matrix_filter(matrixs, "only_open", 1000)
+    request.filter_by = "only_open"
+    request.ignore_threshold = 1000
+    filter = matrix_filter(matrixs, request)
     assert len(filter) == 4
     for i in filter:
         assert i.end is None
 
-    filter = matrix_filter(matrixs, "only_close", 1000)
+    request.filter_by = "only_close"
+    filter = matrix_filter(matrixs, request)
     assert len(filter) == 0
     for i in filter:
         assert i.end
 
-    filter = matrix_filter(matrixs, "all", 1000)
+    request.filter_by = "all"
+    filter = matrix_filter(matrixs, request)
     assert len(filter) == 4
 
-    filter = matrix_filter(matrixs, "only_open", 10000)
+    request.filter_by = "only_open"
+    request.ignore_threshold = 10000
+    filter = matrix_filter(matrixs, request)
     assert len(filter) == 0
 
-    filter = matrix_filter(matrixs, "only_close", 10000)
+    request.filter_by = "only_close"
+    filter = matrix_filter(matrixs, request)
     assert len(filter) == 0
 
-    filter = matrix_filter(matrixs, "all", 10000)
+    request.filter_by = "all"
+    filter = matrix_filter(matrixs, request)
     assert len(filter) == 0

@@ -1,4 +1,4 @@
-Coord = tuple[int, int]
+from ..types import Coord
 
 
 class ItemIcon:

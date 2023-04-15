@@ -5,8 +5,17 @@ from httpx import AsyncClient
 
 from .config import plugin_config
 from .utils import PenguinDataParser
-from .model import Item, Zone, Stage, Matrix, Request
-from .types import T_Query, T_Server, T_Respond, lang_map
+from .types import (
+    Item,
+    Zone,
+    Stage,
+    Matrix,
+    Request,
+    T_Query,
+    T_Server,
+    T_Respond,
+    lang_map,
+)
 
 
 class Penguin:
@@ -27,10 +36,8 @@ class Penguin:
             html状态码
         """
         async with AsyncClient() as client:
-            widget_url = (
-                f"{plugin_config.penguin_widget}/result/{request.server.upper()}/{type}"
-            )
-            match type:
+            widget_url = f"{plugin_config.penguin_widget}/result/{request.server.upper()}/{request.type}"  # noqa: E501
+            match request.type:
                 case "item" | "stage":
                     widget_url += f"/{request.ids[0]}"
                 case "exact":

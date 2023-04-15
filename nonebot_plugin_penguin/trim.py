@@ -1,4 +1,4 @@
-from .model import Matrix, Request, RenderByItem, RenderByStage
+from .types import Matrix, Request, RenderByItem, RenderByStage
 
 
 def matrix_sort(matrixs: list[Matrix], request: Request) -> list[Matrix]:

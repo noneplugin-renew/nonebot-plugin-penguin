@@ -23,7 +23,7 @@ async def test_render(app: App):
             / "templates"
         )
         print(template_path)
-        template_name = "card.html"
+        template_name = "item_card.html"
 
         @dataclass
         class Stage:
@@ -41,6 +41,7 @@ async def test_render(app: App):
             "item_icon_css": ItemIcon.style((0, 0)),
             "stages": stages,
             "all_stage": "10",
+            "sort_by": "apPPR",
         }
 
         html = await template_to_html(
@@ -53,14 +54,9 @@ async def test_render(app: App):
         pic = await template_to_pic(
             template_path=template_path,
             template_name=template_name,
-            templates={
-                "item_name": "测试",
-                "item_icon_css": "background-image: url(./img/1.png);",
-                "stages": stages,
-                "all_stage": "10",
-            },
+            templates=t,
             pages={
-                "viewport": {"width": 440, "height": 300},
+                "viewport": {"width": 430, "height": 300},
                 "base_url": f"file://{template_path}",
             },
             wait=2,

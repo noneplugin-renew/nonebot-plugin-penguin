@@ -13,7 +13,6 @@ from nonebot_plugin_htmlrender import template_to_pic  # noqa: E402
 
 _cache = None
 template_path = Path(__file__).parent / "templates"
-template_name = "card.html"
 
 
 async def render(request: Request):
@@ -27,13 +26,16 @@ async def render(request: Request):
             trimed_data = matrix_export(penguin.matrix(), request)
             title = request.name.split()[0]
             sprite_coord = Coord(penguin.by_item_id(request.ids[0]).spriteCoord)
+            template_name = "item_card.html"
             template_data = dict(
                 item_name=title,
                 item_icon_css=ItemIcon.style(sprite_coord),
                 stages=trimed_data[: plugin_config.penguin_show_count],
                 all_stage=len(trimed_data),
+                sort_by=request.sort_by,
             )
         case _:
+            template_name = ""
             template_data = {}
 
     return await template_to_pic(

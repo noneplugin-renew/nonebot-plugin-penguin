@@ -20,14 +20,23 @@
               <tr>
                 <th>作战</th>
                 <th class="font-weight-bold">
-                  百分比
+                  百分比 {% if sort_by == "percentage" %}
                   <i
                     class="v-icon notranslate mdi mdi-sort-variant theme--light"
                     style="font-size: 16px"
                   >
                   </i>
+                  {% endif %}
                 </th>
-                <th>单件期望理智</th>
+                <th class="font-weight-bold">
+                  单件期望理智 {% if sort_by == "apPPR" %}
+                  <i
+                    class="v-icon notranslate mdi mdi-sort-variant theme--light"
+                    style="font-size: 16px"
+                  >
+                  </i>
+                  {% endif %}
+                </th>
                 <th>掉落数 / <small>样本数</small></th>
               </tr>
             </thead>

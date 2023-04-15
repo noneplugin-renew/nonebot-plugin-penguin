@@ -9,8 +9,11 @@
 <div class="v-tooltip__content">
   <div class="v-sheet theme--light">
     <div class="v-card__title">
-      <figure alt="{{ item_name }}" style="{{ item_icon_css }}"></figure>
-      <span>{{ item_name }}</span>
+      <i
+        class="v-icon notranslate mdi mdi-sword-cross theme--light"
+        style="font-size: 32px"
+      ></i>
+      <span>{{ stage_name }}</span>
     </div>
     <div class="v-card__text">
       <div class="v-data-table theme--light">
@@ -18,7 +21,7 @@
           <table>
             <thead>
               <tr>
-                <th>作战</th>
+                <th>掉落物</th>
                 <th class="font-weight-bold">
                   百分比 {% if sort_by == "percentage" %}
                   <i
@@ -41,22 +44,20 @@
               </tr>
             </thead>
             <tbody>
-              {% for stage in stages %}
+              {% for item in items %}
               <tr class="monospace">
-                <td class="left">
-                  <small> {{ stage.zone }} </small>
-                  <br />
-                  <i
-                    class="v-icon notranslate mdi mdi-sword-cross theme--light"
-                    style="font-size: 16px"
-                  ></i
-                  >{{ stage.stage_name }}
+                <td class="left" style="display: flex; height: 32px">
+                  <figure
+                    alt="{{ item.item_name }}"
+                    style="margin: 0px;{{ icon.style(item.sprite_coord, 30) }}"
+                  ></figure>
+                  <div style="padding: 7px 3px">{{item.item_name }}</div>
                 </td>
-                <td>{{ stage.percent }}</td>
-                <td>{{ stage.ap_cost }}</td>
+                <td>{{ item.percent }}</td>
+                <td>{{ item.ap_cost }}</td>
                 <td>
-                  {{ stage.rop_count }} /
-                  <small>{{ stage.simple_count }}</small>
+                  {{ item.rop_count }} /
+                  <small>{{ item.simple_count }}</small>
                 </td>
               </tr>
               {% endfor %}
@@ -66,7 +67,7 @@
                     class="v-icon notranslate mdi mdi-dots-horizontal theme--light grey--text"
                   ></i>
                   <span>
-                    共 {{ all_stage }} 个作战含有此掉落 <br /><small
+                    此作战共 {{ all_item }} 个掉落 <br /><small
                       >&gt;&gt; Penguin Statistics &lt;&lt;</small
                     ></span
                   >

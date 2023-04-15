@@ -57,9 +57,19 @@ async def render(request: Request):
                 all_stage=len(trimed_data),
                 sort_by=request.sort_by,
             )
+        case "stage" | "exact":
+            trimed_data = matrix_export(penguin.matrix(), request)
+            title = request.name.split()[0]
+            template_name = "stage_card.html"
+            template_data = dict(
+                stage_name=title,
+                items=trimed_data[: plugin_config.penguin_show_count],
+                all_item=len(trimed_data),
+                sort_by=request.sort_by,
+                icon=ItemIcon,
+            )
         case _:
-            template_name = ""
-            template_data = {}
+            raise NotImplementedError(f"未支持的类型{request.type}")
 
     html = await template_to_html(
         template_name=template_name,
@@ -67,11 +77,14 @@ async def render(request: Request):
         **template_data,
     )
 
+    # with open("temp_check.html", "w") as f:
+    #     f.write(html)
+
     return await html_to_pic_with_selector(
         html=html,
         selector="body > div",
         template_path=template_path.as_posix(),
-        viewport={"width": 500, "height": 300},
+        viewport={"width": 1000, "height": 1000},
         base_url=f"file://{template_path}",
         wait=2,
     )

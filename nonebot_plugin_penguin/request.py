@@ -66,7 +66,7 @@ class Penguin:
         item_dict = next((item for item in items if item.get("itemId") == item_id), {})
         if item_dict.get("spriteCoord") is None:
             # 家具没有spriteCoord，这里手动指定一个
-            item_dict["spriteCoord"] = [1, 9]
+            item_dict["spriteCoord"] = [2, 16]
         return Item.parse_obj(item_dict)
 
     def by_stage_id(self, stage_id: str) -> Stage:

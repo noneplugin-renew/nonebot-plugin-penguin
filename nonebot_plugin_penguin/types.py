@@ -62,7 +62,7 @@ class Matrix(BaseModel):
                     item_name=self.item.name_i18n[lang],
                     sprite_coord=self.item.spriteCoord,
                     percent=str(self.percentage) + "%",
-                    ap_ppr=str(self.apPPR),
+                    ap_cost=str(self.apPPR),
                     rop_count=str(self.quantity),
                     simple_count=str(self.times),
                 )
@@ -94,6 +94,6 @@ class RenderByStage(BaseModel):
     item_name: str
     sprite_coord: list[int]
     percent: str
-    ap_ppr: str
+    ap_cost: str
     rop_count: str
     simple_count: str

@@ -51,7 +51,7 @@ body {
   display: block;
   margin-block-start: 0px;
   margin-block-end: 0;
-  margin-inline-start: 125px;
+  margin-inline-start: auto;
   margin-inline-end: 0px;
   font-weight: bold;
 }

@@ -32,7 +32,27 @@ async def test_render_item(app: App):
     # a.show("template2pic.png")
 
 
-@pytest.mark.skip
+@pytest.mark.asyncio
+@respx.mock
+async def test_render_stage(app: App):
+    from nonebot_plugin_penguin.render import render
+    from nonebot_plugin_penguin.types import Request
+    from nonebot_plugin_penguin.config import plugin_config
+
+    url1 = f"{plugin_config.penguin_widget}/result/CN/stage/main_01-07"
+    url1_router = respx.get(url1)
+    url1_router.mock(Response(200, text=get_file("request/fake_stage_main_01-07.html")))
+
+    request = Request(name="test", type="stage", ids=("main_01-07",))
+
+    pic_bytes = await render(request)
+    assert pic_bytes
+    assert pic_bytes.startswith(b"\x89PNG")
+    # a = Image.open(io.BytesIO(pic_bytes))
+    # a.show("template2pic.png")
+
+
+@pytest.mark.skip(reason="这是一个测试htmlrender的测试，不需要自动运行")
 @pytest.mark.asyncio
 async def test_render(app: App):
     require("nonebot_plugin_htmlrender")

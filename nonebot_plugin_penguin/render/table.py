@@ -23,29 +23,6 @@ async def html_to_pic_with_selector(
     require("nonebot_plugin_htmlrender")
     from nonebot_plugin_htmlrender import get_new_page
 
-    if "file://" not in template_path:
-        raise ValueError("template_path 应该为 file:///path/to/template")
-    async with get_new_page(**pages) as page:
-        await page.goto(template_path)
-        await page.set_content(html, wait_until="networkidle")
-        await page.wait_for_timeout(wait)
-        img_raw = await page.locator(selector).screenshot(
-            type=type,
-        )
-    return img_raw
-
-
-async def html_to_pic_with_selector(
-    html: str,
-    selector: str,
-    wait: int = 0,
-    template_path: str = "",
-    type: Literal["jpeg", "png"] = "png",
-    **pages,
-) -> bytes:
-    require("nonebot_plugin_htmlrender")
-    from nonebot_plugin_htmlrender import get_new_page
-
     if not template_path and "file://" not in template_path:
         raise Exception("template_path 应该为 file:///path/to/template")
     async with get_new_page(**pages) as page:

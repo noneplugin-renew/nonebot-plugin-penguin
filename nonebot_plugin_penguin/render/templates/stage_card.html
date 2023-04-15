@@ -1,0 +1,82 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="./app.css" />
+<link rel="stylesheet" href="./card.css" />
+
+<div class="v-tooltip__content">
+  <div class="v-sheet theme--light">
+    <div class="v-card__title">
+      <i
+        class="v-icon notranslate mdi mdi-sword-cross theme--light"
+        style="font-size: 32px"
+      ></i>
+      <span>{{ stage_name }}</span>
+    </div>
+    <div class="v-card__text">
+      <div class="v-data-table theme--light">
+        <div class="v-data-table__wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>掉落物</th>
+                <th class="font-weight-bold">
+                  百分比 {% if sort_by == "percentage" %}
+                  <i
+                    class="v-icon notranslate mdi mdi-sort-variant theme--light"
+                    style="font-size: 16px"
+                  >
+                  </i>
+                  {% endif %}
+                </th>
+                <th class="font-weight-bold">
+                  单件期望理智 {% if sort_by == "apPPR" %}
+                  <i
+                    class="v-icon notranslate mdi mdi-sort-variant theme--light"
+                    style="font-size: 16px"
+                  >
+                  </i>
+                  {% endif %}
+                </th>
+                <th>掉落数 / <small>样本数</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in items %}
+              <tr class="monospace">
+                <td class="left" style="display: flex; height: 32px">
+                  <figure
+                    alt="{{ item.item_name }}"
+                    style="margin: 0px;{{ icon.style(item.sprite_coord, 30) }}"
+                  ></figure>
+                  <div style="padding: 7px 3px">{{item.item_name }}</div>
+                </td>
+                <td>{{ item.percent }}</td>
+                <td>{{ item.ap_cost }}</td>
+                <td>
+                  {{ item.rop_count }} /
+                  <small>{{ item.simple_count }}</small>
+                </td>
+              </tr>
+              {% endfor %}
+              <tr>
+                <td colspan="4" id="more">
+                  <i
+                    class="v-icon notranslate mdi mdi-dots-horizontal theme--light grey--text"
+                  ></i>
+                  <span>
+                    此作战共 {{ all_item }} 个掉落 <br /><small
+                      >&gt;&gt; Penguin Statistics &lt;&lt;</small
+                    ></span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

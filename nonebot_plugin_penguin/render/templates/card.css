@@ -1,0 +1,166 @@
+body {
+  background-color: rgba(0, 0, 0, 1);
+  margin: 0px;
+}
+.v-tooltip__content {
+  position: absolute;
+}
+
+.theme--light.v-sheet {
+  background-color: #fff;
+}
+
+.v-sheet {
+  border-radius: 5px;
+}
+
+.v-card__title {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.0125em;
+  line-height: 2rem;
+  word-break: break-all;
+}
+
+.v-card__text,
+.v-card__title {
+  padding: 16px;
+}
+
+.v-card__title > figure {
+  display: block;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 5px;
+  margin-inline-end: 0px;
+}
+.v-card__title > span {
+  display: block;
+  margin-block-start: 0px;
+  margin-block-end: 0;
+  margin-inline-start: auto;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.v-card__title + .v-card__text {
+  padding-top: 0px;
+}
+
+.v-tooltip__content .theme--light.v-data-table {
+  background: #f0f0f0 !important;
+}
+
+.v-data-table {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.v-data-table__wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.theme--light.v-data-table thead tr:last-child th {
+  border-bottom: thin solid rgba(19, 140, 221, 0.438);
+}
+
+.theme--light.v-data-table thead tr th {
+  color: rgba(5, 61, 114, 0.6);
+}
+
+.v-data-table th {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 0.8rem;
+  height: 32px;
+}
+
+.v-data-table td,
+.v-data-table th {
+  padding: 0 16px;
+}
+
+.v-icon {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  font-size: 24px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  letter-spacing: normal;
+  line-height: 1;
+  position: relative;
+  text-indent: 0;
+  -webkit-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), visibility 0s;
+  -o-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), visibility 0s;
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), visibility 0s;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.theme--light.v-icon {
+  color: rgba(9, 0, 63, 0.54);
+}
+
+small {
+  font-size: 80%;
+}
+
+.monospace {
+  font-family: benderregular, SF Mono, Droid Sans Mono, Ubuntu Mono, Consolas,
+    Courier New, Courier, monospace !important;
+  letter-spacing: 0.03rem;
+}
+
+.theme--light.v-data-table
+  tbody
+  tr:not(:last-child)
+  td:not(.v-data-table__mobile-row),
+.theme--light.v-data-table
+  tbody
+  tr:not(:last-child)
+  th:not(.v-data-table__mobile-row) {
+  border-bottom: thin solid rgba(0, 0, 0, 0.12);
+}
+
+.v-data-table td {
+  font-size: 0.875rem;
+  height: 24px;
+}
+
+/* id=more的元素文字居中*/
+#more {
+  text-align: center;
+}

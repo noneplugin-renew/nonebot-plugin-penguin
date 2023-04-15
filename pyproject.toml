@@ -23,6 +23,7 @@ python = "^3.10"
 tinydb = "^4.7.1"
 nonebot2 = { extras = ["fastapi"], version = "^2.0.0rc4" }
 httpx = "^0.23.3"
+nonebot-plugin-htmlrender = "^0.2.0.3"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.10.1"
@@ -36,6 +37,8 @@ pytest-asyncio = "^0.21.0"
 pytest-cov = "^4.0.0"
 respx = "^0.20.1"
 fastapi = "^0.95.0"
+flaky = "^3.7.0"
+pytest-xdist = {extras = ["psutil"], version = "^3.2.1"}
 
 [tool.black]
 line-length = 88

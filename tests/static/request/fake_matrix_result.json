@@ -34,5 +34,7 @@
   "percentage": 4.56,
   "apPPR": 3.95,
   "quantity": 175,
-  "times": 3837
+  "times": 3837,
+  "start": 1642968000000,
+  "end": null
 }

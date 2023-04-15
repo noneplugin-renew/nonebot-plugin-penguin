@@ -1,28 +1,27 @@
 import json
-import time
-from typing import Any, Union, Literal
+from typing import Any
 
 from httpx import AsyncClient
 
 from .config import plugin_config
 from .utils import PenguinDataParser
-from .model import Item, Zone, Stage, Matrix
-
-T_Server = Literal["cn", "kr", "us", "jp"]
-T_Query = Literal["item", "stage", "exact"]
-T_Model = Union[Item, Stage, Zone, Matrix]
-T_Respond = Literal["item", "stage", "zone", "matrix"]
-
-lang_map = {"cn": "zh", "kr": "ko", "us": "en", "jp": "ja"}
+from .types import (
+    Item,
+    Zone,
+    Stage,
+    Matrix,
+    Request,
+    T_Query,
+    T_Server,
+    T_Respond,
+    lang_map,
+)
 
 
 class Penguin:
     raw: tuple[T_Query, dict[str, Any]]
-    cache: tuple[T_Query, tuple, int] = (None, (), 0)  # type: ignore
 
-    async def fetch(
-        self, server: T_Server, type: T_Query, ids: tuple[str] | tuple[str, str]
-    ) -> int:
+    async def fetch(self, request: Request) -> int:
         """请求penguin-stats的widget数据, 存储到raw中
 
         参数:
@@ -36,34 +35,22 @@ class Penguin:
         返回值:
             html状态码
         """
-        # 一分钟内需要请求的数据与当前缓存的数据相同时，直接返回304表示使用缓存
-        if (
-            self.cache[0] == type
-            and self.cache[1] == ids
-            and int(time.time()) - self.cache[2] < 60
-        ):
-            return 304
-
         async with AsyncClient() as client:
-            widget_url = (
-                f"{plugin_config.penguin_widget}/result/{server.upper()}/{type}"
-            )
-            match type:
+            widget_url = f"{plugin_config.penguin_widget}/result/{request.server.upper()}/{request.type}"  # noqa: E501
+            match request.type:
                 case "item" | "stage":
-                    widget_url += f"/{ids[0]}"
+                    widget_url += f"/{request.ids[0]}"
                 case "exact":
                     assert (
-                        len(ids) == 2
+                        len(request.ids) == 2
                     ), "当type为exact时, ids需要(StageId, ItemId)的长度为2的tuple)"
-                    widget_url += f"/{ids[0]}/{ids[1]}"
+                    widget_url += f"/{request.ids[0]}/{request.ids[1]}"
 
             res = await client.get(widget_url)
             html_obj = PenguinDataParser()
             html_obj.feed(res.text)
             assert html_obj.data
-            self.raw = (type, json.loads(html_obj.data))
-        # 请求了新的数据，更新_cache
-        self.cache = (type, ids, int(time.time()))
+            self.raw = (request.type, json.loads(html_obj.data))
 
         return res.status_code
 
@@ -77,6 +64,9 @@ class Penguin:
         items = self.all()[1].get("items")
         assert isinstance(items, list), "items的值应该是列表而非其他！"
         item_dict = next((item for item in items if item.get("itemId") == item_id), {})
+        if item_dict.get("spriteCoord") is None:
+            # 家具没有spriteCoord，这里手动指定一个
+            item_dict["spriteCoord"] = [2, 16]
         return Item.parse_obj(item_dict)
 
     def by_stage_id(self, stage_id: str) -> Stage:
@@ -122,6 +112,8 @@ class Penguin:
 
             percentage = round(quantity / times * 100, 2)
             apPPR = round(stage.apCost / percentage, 2)
+            start: int = raw_item.get("start", 0)  # type: ignore
+            end: int | None = raw_item.get("end", None)  # type: ignore
 
             return Matrix(
                 stage=stage,
@@ -131,6 +123,8 @@ class Penguin:
                 apPPR=apPPR,
                 quantity=quantity,
                 times=times,
+                start=start,
+                end=end,
             )
 
         _cache = map(gen_dict, _cache)
@@ -140,12 +134,12 @@ class Penguin:
         match type:
             case "item":
                 item = self.by_item_id(id)
-                return item.name_i18n.get(lang_map[server.lower()], id)
+                return item.name_i18n.get(lang_map[server], id)
             case "stage":
                 stage = self.by_stage_id(id)
-                return stage.code_i18n.get(lang_map[server.lower()], id)
+                return stage.code_i18n.get(lang_map[server], id)
             case "zone":
                 zone = self.by_zone_id(id)
-                return zone.zoneName_i18n.get(lang_map[server.lower()], id)
+                return zone.zoneName_i18n.get(lang_map[server], id)
             case _:
                 return "暂不支持"

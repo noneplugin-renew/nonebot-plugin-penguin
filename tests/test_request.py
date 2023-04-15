@@ -11,6 +11,7 @@ from .utils import get_file, get_json
 @pytest.mark.asyncio
 @respx.mock
 async def test_fetch(app: App):
+    from nonebot_plugin_penguin.types import Request
     from nonebot_plugin_penguin.request import Penguin
     from nonebot_plugin_penguin.config import plugin_config
 
@@ -29,21 +30,24 @@ async def test_fetch(app: App):
     )
 
     penguin = Penguin()
-    await penguin.fetch("cn", "item", ("30014",))
+    request1 = Request(name="test", type="item", ids=("30014",))
+    await penguin.fetch(request1)
     assert url1_router.called
     assert url1_router.calls.last.response.status_code == 200
     assert url1_router.calls.last.request.url == url1
     assert "item" == penguin.raw[0]
     assert penguin.raw[1]["query"]["itemId"] == "30014"
 
-    await penguin.fetch("cn", "stage", ("main_01-07",))
+    request2 = Request(name="test", type="stage", ids=("main_01-07",))
+    await penguin.fetch(request2)
     assert url2_router.called
     assert url2_router.calls.last.response.status_code == 200
     assert url2_router.calls.last.request.url == url2
     assert "stage" == penguin.raw[0]
     assert penguin.raw[1]["query"]["stageId"] == "main_01-07"
 
-    res_code = await penguin.fetch("cn", "exact", ("main_01-07", "30012"))
+    request3 = Request(name="test", type="exact", ids=("main_01-07", "30012"))
+    res_code = await penguin.fetch(request3)
     assert url3_router.call_count == 1
     assert url3_router.calls.last.response.status_code == res_code
     assert url3_router.calls.last.request.url == url3
@@ -51,14 +55,11 @@ async def test_fetch(app: App):
     assert penguin.raw[1]["query"]["stageId"] == "main_01-07"
     assert penguin.raw[1]["query"]["itemId"] == "30012"
 
-    res_code = await penguin.fetch("cn", "exact", ("main_01-07", "30012"))
-    assert url3_router.call_count == 1
-    assert res_code == 304
-
 
 @pytest.mark.asyncio
 @respx.mock
 async def test_all(app: App):
+    from nonebot_plugin_penguin.types import Request
     from nonebot_plugin_penguin.request import Penguin
     from nonebot_plugin_penguin.config import plugin_config
 
@@ -67,8 +68,8 @@ async def test_all(app: App):
     url1_router.mock(Response(200, text=get_file("request/fake_item_30014.html")))
 
     penguin = Penguin()
-
-    await penguin.fetch("cn", "item", ("30014",))
+    request = Request(name="test", type="item", ids=("30014",))
+    await penguin.fetch(request)
     assert "item" == penguin.all()[0]
     assert penguin.all()[1]["query"]["itemId"] == "30014"
 
@@ -93,7 +94,7 @@ def test_by_xx_id(app: App):
 
 
 def test_matrix(app: App):
-    from nonebot_plugin_penguin.model import Matrix
+    from nonebot_plugin_penguin.types import Matrix
     from nonebot_plugin_penguin.request import Penguin
 
     penguin = Penguin()

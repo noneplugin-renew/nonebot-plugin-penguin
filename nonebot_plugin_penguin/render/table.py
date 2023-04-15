@@ -10,7 +10,6 @@ from ..config import plugin_config
 from .item_sprite import Coord, ItemIcon
 
 template_path = Path(__file__).parent / "templates"
-<<<<<<< HEAD
 
 
 async def html_to_pic_with_selector(
@@ -34,8 +33,29 @@ async def html_to_pic_with_selector(
             type=type,
         )
     return img_raw
-=======
->>>>>>> e958020 (:white_check_mark: 调整旧的测试)
+
+
+async def html_to_pic_with_selector(
+    html: str,
+    selector: str,
+    wait: int = 0,
+    template_path: str = "",
+    type: Literal["jpeg", "png"] = "png",
+    **pages,
+) -> bytes:
+    require("nonebot_plugin_htmlrender")
+    from nonebot_plugin_htmlrender import get_new_page
+
+    if not template_path and "file://" not in template_path:
+        raise Exception("template_path 应该为 file:///path/to/template")
+    async with get_new_page(**pages) as page:
+        await page.goto(template_path)
+        await page.set_content(html, wait_until="networkidle")
+        await page.wait_for_timeout(wait)
+        img_raw = await page.locator(selector).screenshot(
+            type=type,
+        )
+    return img_raw
 
 
 async def render(request: Request):

@@ -27,7 +27,6 @@ nonebot-plugin-htmlrender = "^0.2.0.3"
 nonebot-plugin-apscheduler = "^0.2.0"
 nonebot-plugin-send-anything-anywhere = "^0.2.2"
 nonebot-adapter-onebot = "^2.2.2"
-freezegun = "^1.2.2"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.10.1"
@@ -43,6 +42,7 @@ respx = "^0.20.1"
 fastapi = "^0.95.0"
 flaky = "^3.7.0"
 pytest-xdist = {extras = ["psutil"], version = "^3.2.1"}
+freezegun = "^1.2.2"
 
 [tool.black]
 line-length = 88

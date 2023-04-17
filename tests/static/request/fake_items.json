@@ -1,0 +1,186 @@
+[
+  {
+    "itemId": "2001",
+    "name": "基础作战记录",
+    "name_i18n": {
+      "en": "Drill Battle Record",
+      "ja": "入門作戦記録",
+      "ko": "기초작전기록",
+      "zh": "基础作战记录"
+    },
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "itemType": "CARD_EXP",
+    "sortId": 20004,
+    "rarity": 1,
+    "groupID": "exp",
+    "spriteCoord": [0, 0],
+    "alias": {
+      "ja": [
+        "入門作戦記録",
+        "にゅうもんさくせんきろく",
+        "ニュウモンサクセンキロク"
+      ],
+      "zh": ["基础作战记录", "狗粮", "录像带", "经验卡"]
+    },
+    "pron": {
+      "ja": ["nyuumon`sakusen`kiroku", "nyuumon`sakusen`kiroku"],
+      "zh": [
+        "ji`chu`zuo`zhan`ji`lu",
+        "gou`liang",
+        "lu`xiang`dai",
+        "jing`yan`ka"
+      ]
+    }
+  },
+  {
+    "itemId": "2002",
+    "name": "初级作战记录",
+    "name_i18n": {
+      "en": "Frontline Battle Record",
+      "ja": "初級作戦記録",
+      "ko": "초급작전기록",
+      "zh": "初级作战记录"
+    },
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "itemType": "CARD_EXP",
+    "sortId": 20003,
+    "rarity": 2,
+    "groupID": "exp",
+    "spriteCoord": [1, 0],
+    "alias": {
+      "ja": [
+        "初級作戦記録",
+        "しょきゅうさくせんきろく",
+        "ショキュウサクセンキロク"
+      ],
+      "zh": ["初级作战记录", "狗粮", "录像带", "经验卡"]
+    },
+    "pron": {
+      "ja": ["shokyuu`sakusen`kiroku", "syokyuu`sakusen`kiroku"],
+      "zh": [
+        "chu`ji`zuo`zhan`ji`lu",
+        "gou`liang",
+        "lu`xiang`dai",
+        "jing`yan`ka"
+      ]
+    }
+  },
+  {
+    "itemId": "2003",
+    "name": "中级作战记录",
+    "name_i18n": {
+      "en": "Tactical Battle Record",
+      "ja": "中級作戦記録",
+      "ko": "중급작전기록",
+      "zh": "中级作战记录"
+    },
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "itemType": "CARD_EXP",
+    "sortId": 20002,
+    "rarity": 3,
+    "groupID": "exp",
+    "spriteCoord": [2, 0],
+    "alias": {
+      "ja": [
+        "中級作戦記録",
+        "ちゅうきゅうさくせんきろく",
+        "チュウキュウサクセンキロク"
+      ],
+      "zh": ["中级作战记录", "狗粮", "录像带", "经验卡"]
+    },
+    "pron": {
+      "ja": ["chuukyuu`sakusen`kiroku", "tyuukyuu`sakusen`kiroku"],
+      "zh": [
+        "zhong`ji`zuo`zhan`ji`lu",
+        "gou`liang",
+        "lu`xiang`dai",
+        "jing`yan`ka"
+      ]
+    }
+  },
+  {
+    "itemId": "2004",
+    "name": "高级作战记录",
+    "name_i18n": {
+      "en": "Strategic Battle Record",
+      "ja": "上級作戦記録",
+      "ko": "고급작전기록",
+      "zh": "高级作战记录"
+    },
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "itemType": "CARD_EXP",
+    "sortId": 20001,
+    "rarity": 4,
+    "groupID": "exp",
+    "spriteCoord": [3, 0],
+    "alias": {
+      "ja": [
+        "上級作戦記録",
+        "じょうきゅうさくせんきろく",
+        "ジョウキュウサクセンキロク"
+      ],
+      "zh": ["高级作战记录", "狗粮", "录像带", "经验卡"]
+    },
+    "pron": {
+      "ja": ["joukyuu`sakusen`kiroku", "joukyuu`sakusen`kiroku"],
+      "zh": [
+        "gao`ji`zuo`zhan`ji`lu",
+        "gou`liang",
+        "lu`xiang`dai",
+        "jing`yan`ka"
+      ]
+    }
+  }
+]

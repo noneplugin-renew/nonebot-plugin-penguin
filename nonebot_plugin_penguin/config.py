@@ -14,6 +14,7 @@ class PlugConfig(BaseSettings):
     penguin_site: str = Field(default_factory=str)
     penguin_cdn: str = Field(default_factory=str)
     penguin_widget: str = Field(default_factory=str)
+    penguin_id_map: Path = Field(default_factory=Path)
 
     class Config:
         extra = "ignore"

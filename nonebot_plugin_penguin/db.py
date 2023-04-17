@@ -1,12 +1,19 @@
 import time
 
 from httpx import AsyncClient
-from nonebot import get_driver
 from tinydb import Query, TinyDB
 
 from .config import plugin_config
 
 id_map = TinyDB(plugin_config.penguin_id_map)
+
+
+async def id_map_init():
+    if id_map.table("check").all():
+        return
+    id_map.table("check")
+    id_map.table("items")
+    id_map.table("stages")
 
 
 # 反序列化时忽略不需要的字段
@@ -43,11 +50,7 @@ async def id_map_update():
     check_table.upsert({"last_update": int(time.time())}, Query().last_update.exists())
 
 
-get_driver().on_startup(id_map_update)  # 启动时更新一次
-get_driver().on_shutdown(id_map.close)  # 关闭时关闭数据库
-
-
-def get_item_id(item_name: str):
+async def get_item_id(item_name: str):
     items_map = id_map.table("items")
     q = Query()
     if item := items_map.get(q.name_i18n.any([item_name])):
@@ -57,7 +60,7 @@ def get_item_id(item_name: str):
         return items
 
 
-def get_stage_id(stage_name: str):
+async def get_stage_id(stage_name: str):
     stages_map = id_map.table("stages")
     q = Query()
     return stages_map.get(q.code_i18n.any([stage_name]))

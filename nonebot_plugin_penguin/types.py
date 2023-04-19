@@ -25,7 +25,7 @@ class Stage(BaseModel):
     zoneId: str
     code_i18n: dict[str, str]
     apCost: int
-    minClearTime: int
+    minClearTime: int | None
 
 
 class Zone(BaseModel):

@@ -1,6 +1,5 @@
 from .types import Matrix, Request, RenderByItem, RenderByStage
 
-
 def matrix_sort(matrixs: list[Matrix], request: Request) -> list[Matrix]:
     return sorted(
         matrixs, key=lambda x: getattr(x, request.sort_by), reverse=request.reverse

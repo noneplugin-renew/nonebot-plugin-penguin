@@ -1,0 +1,170 @@
+[
+  {
+    "stageId": "main_00-01",
+    "zoneId": "main_0",
+    "stageType": "MAIN",
+    "code": "0-1",
+    "code_i18n": {
+      "en": "0-1",
+      "ja": "0-1",
+      "ko": "0-1",
+      "zh": "0-1"
+    },
+    "apCost": 6,
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "minClearTime": 63700
+  },
+  {
+    "stageId": "main_00-02",
+    "zoneId": "main_0",
+    "stageType": "MAIN",
+    "code": "0-2",
+    "code_i18n": {
+      "en": "0-2",
+      "ja": "0-2",
+      "ko": "0-2",
+      "zh": "0-2"
+    },
+    "apCost": 6,
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "minClearTime": 73000
+  },
+  {
+    "stageId": "main_00-03",
+    "zoneId": "main_0",
+    "stageType": "MAIN",
+    "code": "0-3",
+    "code_i18n": {
+      "en": "0-3",
+      "ja": "0-3",
+      "ko": "0-3",
+      "zh": "0-3"
+    },
+    "apCost": 6,
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "minClearTime": 88600
+  },
+  {
+    "stageId": "main_00-04",
+    "zoneId": "main_0",
+    "stageType": "MAIN",
+    "code": "0-4",
+    "code_i18n": {
+      "en": "0-4",
+      "ja": "0-4",
+      "ko": "0-4",
+      "zh": "0-4"
+    },
+    "apCost": 6,
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "minClearTime": 120600
+  },
+  {
+    "stageId": "main_00-05",
+    "zoneId": "main_0",
+    "stageType": "MAIN",
+    "code": "0-5",
+    "code_i18n": {
+      "en": "0-5",
+      "ja": "0-5",
+      "ko": "0-5",
+      "zh": "0-5"
+    },
+    "apCost": 6,
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "minClearTime": 95000
+  },
+  {
+    "stageId": "main_00-06",
+    "zoneId": "main_0",
+    "stageType": "MAIN",
+    "code": "0-6",
+    "code_i18n": {
+      "en": "0-6",
+      "ja": "0-6",
+      "ko": "0-6",
+      "zh": "0-6"
+    },
+    "apCost": 6,
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "minClearTime": 101800
+  }
+]

@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import pytest
 from nonebot import require
 from nonebug import NONEBOT_INIT_KWARGS, App
@@ -15,10 +13,19 @@ def pytest_configure(config: pytest.Config):
 
 
 @pytest.fixture
-async def app(tmp_path: Path, request: pytest.FixtureRequest, mocker: MockerFixture):
-    require("nonebot_plugin_htmlrender")
-    from nonebot_plugin_htmlrender import shutdown_browser
+async def app(tmpdir, request: pytest.FixtureRequest, mocker: MockerFixture):
+    with tmpdir.as_cwd():
+        require("nonebot_plugin_htmlrender")
+        require("nonebot_plugin_apscheduler")
+        require("nonebot_plugin_saa")
+        require("nonebot_plugin_penguin")
+        from nonebot_plugin_htmlrender import shutdown_browser
 
-    yield App()
+        from nonebot_plugin_penguin.db import db
 
-    await shutdown_browser()
+        db._do_init()
+
+        yield App()
+
+        await shutdown_browser()
+        await db.close()

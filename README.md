@@ -79,9 +79,45 @@ _✨ 向企鹅物流查询关卡掉落物数据 ✨_
 
 ## 🎉 使用
 
-### 指令表
+### 指令
 
-|                    指令                    | 权限 | 需要@ | 范围 |                说明                |
-| :----------------------------------------: | :--: | :---: | :--: | :--------------------------------: |
-| `item <掉落物名称或别名(like: 双酮 紫薯)>` | 群员 |  否   | 群聊 | 查询该掉落物掉落率最高的若干个关卡 |
-|         `stage <关卡名(like: 1-7)`         | 群员 |  否   | 群聊 | 查询该关卡掉落率最高的若干个掉落物 |
+    格式:
+    query [-h] {item,stage,exact} names [names ...] [-s {cn,kr,us,jp}] [-l {zh,ko,en,ja}] [-k {percentage,apPPR}] [-f {all,only_open,only_close}] [-t THRESHOLD] [-r]
+
+    位置参数:
+    {item,stage,exact}    查询类型
+    names                 关卡/掉落物名称或别名(H12-4 / 紫薯 / 固源岩), type为exact时，关卡在前，空格隔开, 例如: 1-7 固源岩
+
+    options:
+    -h, --help              显示帮助
+    -s {cn,kr,us,jp}, --server {cn,kr,us,jp}
+                            游戏服务器选择, 默认为cn
+    -l {zh,ko,en,ja}, --lang {zh,ko,en,ja}
+                            生成回复时使用的语言, 默认为zh
+    -k {percentage,apPPR}, --sort {percentage,apPPR}
+                            排序方式, 默认为percentage, apPPR: 每个掉落物平均消耗理智
+    -f {all,only_open,only_close}, --filter {all,only_open,only_close}
+                            关卡过滤方式，默认为all
+    -t THRESHOLD, --threshold THRESHOLD
+                            掉落物过滤阈值, 默认超过100的样本数才会显示
+    -r, --reverse         是否反转排序
+
+例子:
+
+1. 查询12-4的掉落物
+   query stage H12-4
+2. 查询紫薯的掉落关卡
+   query item 紫薯
+3. 查询12-4的掉落物, 且只显示开放的关卡
+   query stage 12-4 -f only_open
+4. 查询1-7的固源岩的掉落信息
+   query exact 1-7 固源岩
+
+\*请自行添加你给bot设置的命令前缀，如/query, #query
+
+### :warning:已知问题
+
+0. 初次安装时，若之前没有使用过`nonebot-plugin-htmlrender`, 第一次发送命令时会开始安装浏览器，可能会比较~~非常~~慢
+1. stage/exact查询目前还无法区分别传，复刻，初次的活动关卡(如生于黑夜DM-X, 偷懒还没写 :dove::dove::dove:)
+2. 发送查询命令之后，还需要再发一条无关消息才会开始渲染图片(会话控制问题，在改了在改了)
+3. 如果使用物品别名进行查询(如：狗粮)，可能会提示出现多个结果，但需要发送一条无关消息后bot才会回复选项，之后才能回复相应序号(还是会话控制问题，在改了在改了)

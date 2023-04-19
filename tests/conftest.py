@@ -23,6 +23,8 @@ async def app(tmpdir, request: pytest.FixtureRequest, mocker: MockerFixture):
 
         from nonebot_plugin_penguin.db import db
 
+        db._do_init()
+
         yield App()
 
         await shutdown_browser()

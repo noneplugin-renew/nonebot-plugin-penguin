@@ -79,6 +79,6 @@ async def test_db_close(app: App, tmpdir):
         assert isinstance(db.stages_map, Table)
         assert isinstance(db.items_map, Table)
         assert isinstance(db.db_check, Table)
-        db.close()
+        await db.close()
         with pytest.raises(AssertionError):
             assert db.id_map is None

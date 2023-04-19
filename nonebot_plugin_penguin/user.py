@@ -10,11 +10,11 @@ from nonebot_plugin_saa import Image, MessageFactory
 from nonebot.adapters.onebot.v11 import MessageEvent as V11Event
 from nonebot.adapters.onebot.v12 import MessageEvent as V12Event
 
+from .db import db
 from .render import render
 from .types import Request
 from .utils import query_parser
 from .config import plugin_config
-from .db import get_item_id, get_stage_id
 
 # from nonebot_plugin_saa import MessageFactory, Image, Text
 
@@ -43,7 +43,7 @@ async def query_init(event: Union[V11Event, V12Event], state: T_State):
     )
 
     if parser_result.type == "item" and len(parser_result.names) == 1:
-        items = await get_item_id(parser_result.names[0])
+        items = await db.get_item_id(parser_result.names[0])
 
         if not items:
             await query.finish("该物品不存在")
@@ -56,7 +56,7 @@ async def query_init(event: Union[V11Event, V12Event], state: T_State):
             state["request"] = full_request
 
     elif parser_result.type == "stage" and len(parser_result.names) == 1:
-        stages = await get_stage_id(parser_result.names[0])
+        stages = await db.get_stage_id(parser_result.names[0])
 
         if not stages:
             await query.finish("该关卡不存在")
@@ -66,8 +66,8 @@ async def query_init(event: Union[V11Event, V12Event], state: T_State):
             state["request"] = full_request
 
     elif parser_result.type == "exact" and len(parser_result.names) == 2:
-        stages = await get_stage_id(parser_result.names[0])
-        items = await get_item_id(parser_result.names[1])
+        stages = await db.get_stage_id(parser_result.names[0])
+        items = await db.get_item_id(parser_result.names[1])
 
         if not stages or not items:
             await query.finish("关卡或物品不存在")
@@ -133,11 +133,11 @@ async def post_to_penguin(event: Union[V11Event, V12Event], state: T_State):
             case "stage":
                 url += f"/{request.ids[0]}"
             case "exact":
-                url += f"/{request.ids[0]}/{request.ids[1]}"
+                url += f"/{request.ids[0]}/{request.ids[1]}"  # type: ignore
         url += f"?lang={request.lang}"
 
         await query.send("企鹅物流订单创建成功，正在配送中……")
-        msg_builder = MessageFactory(Image(result_pic_bytes))
+        msg_builder = MessageFactory(Image(result_pic_bytes))  # type: ignore
         await msg_builder.send(at_sender=True)
 
         await query.finish(f"查询详情：{url}")

@@ -50,7 +50,12 @@ class Penguin:
             html_obj = PenguinDataParser()
             html_obj.feed(res.text)
             assert html_obj.data
-            self.raw = (request.type, json.loads(html_obj.data))
+            data: dict = json.loads(html_obj.data)
+
+            if data.get("error"):
+                raise ValueError(data["error"])
+
+            self.raw = (request.type, data)
 
         return res.status_code
 

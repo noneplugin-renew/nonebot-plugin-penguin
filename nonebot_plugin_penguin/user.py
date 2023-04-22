@@ -21,8 +21,9 @@ from .config import plugin_config
 
 def _gen_confirm_prompt(items: list, type_: str) -> str:
     prompt = f"请回复序号选择一个{str(type_)}：\n"
+    key = "name" if type_ == "物品" else "code"
     for idx, candidate in enumerate(items):
-        prompt += f"  {idx}. {candidate['name']}\n"
+        prompt += f"  {idx}. {candidate[key]}\n"
     return prompt
 
 
@@ -71,7 +72,7 @@ async def query_init(event: Union[V11Event, V12Event], state: T_State):
             logger.debug("already get full request: {}".format(state["request"]))
 
     elif parser_result.type == "stage" and len(parser_result.names) == 1:
-        stages = await db.get_stage_id(parser_result.names[0])
+        stages = await db.get_stage_id(parser_result.names[0].upper())
         logger.debug(f"get stages: {stages}")
         if not stages:
             await query.finish("该关卡不存在")
@@ -91,7 +92,7 @@ async def query_init(event: Union[V11Event, V12Event], state: T_State):
             logger.debug("already get full request: {}".format(state["request"]))
 
     elif parser_result.type == "exact" and len(parser_result.names) == 2:
-        stages = await db.get_stage_id(parser_result.names[0])
+        stages = await db.get_stage_id(parser_result.names[0].upper())
         items = await db.get_item_id(parser_result.names[1])
 
         if not stages:

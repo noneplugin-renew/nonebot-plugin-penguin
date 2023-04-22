@@ -21,9 +21,24 @@ from .config import plugin_config
 
 def _gen_confirm_prompt(items: list, type_: str) -> str:
     prompt = f"请回复序号选择一个{str(type_)}：\n"
-    key = "name" if type_ == "物品" else "code"
-    for idx, candidate in enumerate(items):
-        prompt += f"  {idx}. {candidate[key]}\n"
+    match type_:
+        case "物品":
+            for idx, candidate in enumerate(items):
+                prompt += f"  {idx}. {candidate['name']}\n"
+        case "关卡":
+            for idx, candidate in enumerate(items):
+                # stageId的格式是<活动代码>[_<活动类型>]
+                # 没有后缀则为首次活动
+                # _perm 为常驻活动
+                # _rep 为复刻活动
+                match candidate["stageId"].split("_")[-1]:
+                    case "perm":
+                        stage_type = "常驻"
+                    case "rep":
+                        stage_type = "复刻"
+                    case _:
+                        stage_type = "首次"
+                prompt += f"  {idx}. {candidate['code']}▪{stage_type}\n"
     return prompt
 
 

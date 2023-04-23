@@ -11,7 +11,6 @@ from nonebot_plugin_saa import Image, MessageFactory
 from nonebot.adapters.onebot.v11 import MessageEvent as V11Event
 from nonebot.adapters.onebot.v12 import MessageEvent as V12Event
 
-
 from .db import db
 from .render import render
 from .types import Request
@@ -50,6 +49,7 @@ query = on_shell_command("penguin", aliases={"企鹅物流"}, parser=query_parse
 async def query_init(event: Union[V11Event, V12Event], state: T_State):
     parser_result = state["_args"]
     if isinstance(parser_result, ParserExit):
+        logger.debug(f"parser exit: {repr(parser_result)}")
         await query.finish(parser_result.message)
 
     assert isinstance(parser_result, Namespace)

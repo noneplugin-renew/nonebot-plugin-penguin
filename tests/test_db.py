@@ -23,7 +23,6 @@ async def test_db_exist(app: App, tmpdir):
         assert db.stages_map.all() == [
             {"itemId": "1", "name_i18n": {"zh": "1"}, "spriteCoord": [1, 1]}
         ]
-        db.stages_map.truncate()
 
 
 @freezegun.freeze_time("2022-02-02 02:02:02")
@@ -71,6 +70,7 @@ async def test_db_update_and_query(app: App, tmpdir):
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("app", [{"dont_close_db": True}], indirect=True)
 async def test_db_close(app: App, tmpdir):
     with tmpdir.as_cwd():
         from nonebot_plugin_penguin.db import db

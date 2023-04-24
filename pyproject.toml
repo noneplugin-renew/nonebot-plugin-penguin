@@ -43,6 +43,7 @@ fastapi = "^0.95.0"
 flaky = "^3.7.0"
 pytest-xdist = {extras = ["psutil"], version = "^3.2.1"}
 freezegun = "^1.2.2"
+nonebug-saa = "^0.1.0"
 
 [tool.black]
 line-length = 88

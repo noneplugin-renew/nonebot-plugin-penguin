@@ -7,6 +7,7 @@ from .utils import get_file
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("app", [{"dont_close_db": True}], indirect=True)
 @respx.mock
 async def test_startup_run(app: App):
     from nonebot_plugin_penguin.config import plugin_config

@@ -2,9 +2,20 @@ import pytest
 from nonebug import App
 
 
+@pytest.fixture
+async def fake_pic() -> bytes:
+    from nonebot_plugin_htmlrender import text_to_pic
+
+    return await text_to_pic("test")
+
+
 @pytest.mark.skip(reason="has bug")
 @pytest.mark.asyncio
-async def test_find_multi_item(chat_app: App):
+async def test_find_multi_item(chat_app: App, mocker, fake_pic):
+    mocker.patch(
+        "nonebot_plugin_penguin.render.table.html_to_pic_with_selector",
+        return_value=b"test",
+    )
     # from nonebot.adapters.onebot.v11.bot import Bot
     from nonebot_plugin_saa import Image, MessageFactory
 
@@ -54,9 +65,11 @@ async def test_find_multi_item(chat_app: App):
         )
         ctx.receive_event(bot, event_2_ok)
         ctx.should_call_send(event_2_ok, "企鹅物流订单创建成功，正在配送中……", True)
+        fake_saa = MessageFactory(Image(b"test"))
+        print(fake_saa)
         should_send_saa(
             ctx,
-            MessageFactory(Image(b"test_render")),
+            fake_saa,
             bot,
             event=event_2_ok,
         )

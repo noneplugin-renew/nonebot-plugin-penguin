@@ -2,24 +2,14 @@ import pytest
 from nonebug import App
 
 
-@pytest.fixture
-async def fake_pic() -> bytes:
-    from nonebot_plugin_htmlrender import text_to_pic
-
-    return await text_to_pic("test")
-
-
-@pytest.mark.skip(reason="has bug")
 @pytest.mark.asyncio
-async def test_find_multi_item(chat_app: App, mocker, fake_pic):
+async def test_find_multi_item(chat_app: App, mocker):
+    fake_pic_data = b"test"
     mocker.patch(
         "nonebot_plugin_penguin.render.table.html_to_pic_with_selector",
-        return_value=b"test",
+        return_value=fake_pic_data,
     )
-    # from nonebot.adapters.onebot.v11.bot import Bot
     from nonebot_plugin_saa import Image, MessageFactory
-
-    # from nonebot.adapters.onebot.v11 import Adapter as V11Adapter
     from nonebot_plugin_saa.nonebug import should_send_saa
     from nonebot.adapters.onebot.v11.message import Message
 
@@ -65,14 +55,8 @@ async def test_find_multi_item(chat_app: App, mocker, fake_pic):
         )
         ctx.receive_event(bot, event_2_ok)
         ctx.should_call_send(event_2_ok, "企鹅物流订单创建成功，正在配送中……", True)
-        fake_saa = MessageFactory(Image(b"test"))
-        print(fake_saa)
-        should_send_saa(
-            ctx,
-            fake_saa,
-            bot,
-            event=event_2_ok,
-        )
+        fake_saa = MessageFactory(Image(fake_pic_data))
+        should_send_saa(ctx, fake_saa, bot, event=event_2_ok, at_sender=True)
         ctx.should_call_send(
             event_2_ok,
             f"查询详情：{plugin_config.penguin_widget}"

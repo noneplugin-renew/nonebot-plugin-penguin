@@ -1,7 +1,7 @@
 from nonebot import require
 
 require("nonebot_plugin_apscheduler")
-# require("nonebot_plugin_saa")
+require("nonebot_plugin_saa")
 require("nonebot_plugin_htmlrender")
 
 from . import (  # noqa： E402

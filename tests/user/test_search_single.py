@@ -14,8 +14,8 @@ async def test_find_single_item(chat_app: App, mocker):
         "nonebot_plugin_penguin.render.table.html_to_pic_with_selector",
         return_value=fake_pic_data,
     )
+    from nonebug_saa import should_send_saa
     from nonebot_plugin_saa import Image, MessageFactory
-    from nonebot_plugin_saa.nonebug import should_send_saa
     from nonebot.adapters.onebot.v11.message import Message
 
     from nonebot_plugin_penguin.user import query
@@ -54,8 +54,8 @@ async def test_find_single_stage(chat_app: App, mocker):
         "nonebot_plugin_penguin.render.table.html_to_pic_with_selector",
         return_value=b"test",
     )
+    from nonebug_saa import should_send_saa
     from nonebot_plugin_saa import Image, MessageFactory
-    from nonebot_plugin_saa.nonebug import should_send_saa
     from nonebot.adapters.onebot.v11.message import Message
 
     from nonebot_plugin_penguin.user import query
@@ -94,8 +94,8 @@ async def test_find_single_exact(chat_app: App, mocker):
         "nonebot_plugin_penguin.render.table.html_to_pic_with_selector",
         return_value=b"test",
     )
+    from nonebug_saa import should_send_saa
     from nonebot_plugin_saa import Image, MessageFactory
-    from nonebot_plugin_saa.nonebug import should_send_saa
     from nonebot.adapters.onebot.v11.message import Message
 
     from nonebot_plugin_penguin.user import query

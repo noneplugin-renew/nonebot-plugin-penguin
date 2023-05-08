@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nonebot-plugin-penguin"
-version = "0.0.2"
+version = "0.0.3"
 description = "get penguin data and send from https://penguin-stats.io/"
 authors = ["Azide <rukuy@qq.com>"]
 license = "MIT"
@@ -43,7 +43,7 @@ fastapi = "^0.95.0"
 flaky = "^3.7.0"
 pytest-xdist = {extras = ["psutil"], version = "^3.2.1"}
 freezegun = "^1.2.2"
-nonebug-saa = "^0.1.0"
+nonebug-saa = {git = "https://github.com/felinae98/nonebug-saa.git"}
 
 [tool.black]
 line-length = 88

@@ -7,10 +7,15 @@ from .utils import get_file
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("app", [{"dont_close_db": True}], indirect=True)
 @respx.mock
 async def test_startup_run(app: App):
     from nonebot_plugin_penguin.config import plugin_config
-    from nonebot_plugin_penguin.startup import do_db_close, do_db_update
+    from nonebot_plugin_penguin.startup import (
+        do_db_close,
+        do_db_update,
+        do_html_render_startup,
+    )
 
     url1 = f"{plugin_config.penguin_site}/PenguinStats/api/v2/items"
     url1_router = respx.get(url1)
@@ -21,3 +26,4 @@ async def test_startup_run(app: App):
 
     await do_db_update()
     await do_db_close()
+    await do_html_render_startup()

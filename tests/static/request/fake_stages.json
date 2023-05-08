@@ -166,5 +166,89 @@
       }
     },
     "minClearTime": 101800
+  },
+  {
+    "zoneId": "act10sre_zone1",
+    "stageId": "act18d0_01_rep",
+    "stageType": "ACTIVITY",
+    "code": "WD-1",
+    "code_i18n": {
+      "en": "WD-1",
+      "ja": "WD-1",
+      "ko": "WD-1",
+      "zh": "WD-1"
+    },
+    "apCost": 12,
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "minClearTime": 194000
+  },
+  {
+    "zoneId": "act18d0_zone1",
+    "stageId": "act18d0_01",
+    "stageType": "ACTIVITY",
+    "code": "WD-1",
+    "code_i18n": {
+      "en": "WD-1",
+      "ja": "WD-1",
+      "ko": "WD-1",
+      "zh": "WD-1"
+    },
+    "apCost": 12,
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "minClearTime": 194000
+  },
+  {
+    "zoneId": "permanent_sub_2_zone1",
+    "stageId": "act18d0_01_perm",
+    "stageType": "ACTIVITY",
+    "code": "WD-1",
+    "code_i18n": {
+      "en": "WD-1",
+      "ja": "WD-1",
+      "ko": "WD-1",
+      "zh": "WD-1"
+    },
+    "apCost": 12,
+    "existence": {
+      "CN": {
+        "exist": true
+      },
+      "JP": {
+        "exist": true
+      },
+      "KR": {
+        "exist": true
+      },
+      "US": {
+        "exist": true
+      }
+    },
+    "minClearTime": 194000
   }
 ]

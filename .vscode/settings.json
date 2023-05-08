@@ -2,19 +2,6 @@
   "python.testing.pytestArgs": ["tests"],
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
-<<<<<<< HEAD
-<<<<<<< HEAD
   "python.formatting.provider": "black",
-  "liveServer.settings.port": 7138
-=======
-  "python.formatting.provider": "black"
->>>>>>> 4311f3d (:construction: 初步完成matrix export)
-=======
-  "python.formatting.provider": "black",
-<<<<<<< HEAD
-  "liveServer.settings.port": 6158
->>>>>>> b708fe7 (:art: 调整模板渲染效果，添加图片)
-=======
-  "liveServer.settings.port": 7138
->>>>>>> da2de89 (:sparkles: 添加按stage查询时渲染图片的功能)
+  "liveServer.settings.port": 7138,
 }

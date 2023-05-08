@@ -58,6 +58,23 @@ async def test_fetch(app: App):
 
 @pytest.mark.asyncio
 @respx.mock
+async def test_fetch_error(app: App):
+    from nonebot_plugin_penguin.types import Request
+    from nonebot_plugin_penguin.request import Penguin
+    from nonebot_plugin_penguin.config import plugin_config
+
+    url1 = f"{plugin_config.penguin_widget}/result/CN/item/30014"
+    url1_router = respx.get(url1)
+    url1_router.mock(Response(200, text=get_file("request/fake_fetch_error.html")))
+
+    penguin = Penguin()
+    request = Request(name="test", type="item", ids=("30014",))
+    with pytest.raises(ValueError):
+        await penguin.fetch(request)
+
+
+@pytest.mark.asyncio
+@respx.mock
 async def test_all(app: App):
     from nonebot_plugin_penguin.types import Request
     from nonebot_plugin_penguin.request import Penguin

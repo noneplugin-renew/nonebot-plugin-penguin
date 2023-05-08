@@ -1,10 +1,20 @@
 from nonebot import require
 
-from . import db, trim, user, types, utils, render, request, startup, schedule
-
 require("nonebot_plugin_apscheduler")
-require("nonebot_plugin_saa")
+# require("nonebot_plugin_saa")
+require("nonebot_plugin_htmlrender")
 
+from . import (  # noqa： E402
+    db,
+    trim,
+    user,
+    types,
+    utils,
+    render,
+    request,
+    startup,
+    schedule,
+)
 
 __all__ = [
     "render",

@@ -23,7 +23,6 @@ async def test_db_exist(app: App, tmpdir):
         assert db.stages_map.all() == [
             {"itemId": "1", "name_i18n": {"zh": "1"}, "spriteCoord": [1, 1]}
         ]
-        db.stages_map.truncate()
 
 
 @freezegun.freeze_time("2022-02-02 02:02:02")
@@ -43,7 +42,7 @@ async def test_db_update_and_query(app: App, tmpdir):
 
         assert not db.stages_map.all() and not db.items_map.all()
         await db.id_map_update()
-        assert len(db.stages_map.all()) == 6
+        assert len(db.stages_map.all()) == 9
         assert len(db.items_map.all()) == 4
         # last_update 应该是 2022-02-02 02:02:02的时间戳(UTC+0)
         assert db.db_check.all() == [{"last_update": 1643767322}]
@@ -71,6 +70,7 @@ async def test_db_update_and_query(app: App, tmpdir):
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("app", [{"dont_close_db": True}], indirect=True)
 async def test_db_close(app: App, tmpdir):
     with tmpdir.as_cwd():
         from nonebot_plugin_penguin.db import db

@@ -72,7 +72,9 @@ class DB:
 
     async def get_stage_id(self, stage_name: str):
         q = Query()
-        return self.stages_map.get(q.code_i18n.test(lambda x: stage_name in x.values()))
+        return self.stages_map.search(
+            q.code_i18n.test(lambda x: stage_name in x.values())
+        )
 
 
 db = DB()

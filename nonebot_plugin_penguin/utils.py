@@ -27,7 +27,7 @@ class PenguinDataParser(HTMLParser):
             self.data = data
 
 
-query_parser = ArgumentParser("query")
+query_parser = ArgumentParser("penguin")
 query_parser.add_argument(
     "type", type=str, choices=["item", "stage", "exact"], help="查询类型"
 )
@@ -76,4 +76,6 @@ query_parser.add_argument(
 query_parser.add_argument(
     "-t", "--threshold", type=int, required=False, default=100, help="过滤阈值"
 )
-query_parser.add_argument("-r", "--reverse", action="store_false", help="是否反转排序")
+query_parser.add_argument(
+    "-r", "--reverse", action="store_false", help="是否反转排序，建议在apPPR排序时启用"
+)

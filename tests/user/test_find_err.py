@@ -1,5 +1,9 @@
+import respx
 import pytest
 from nonebug import App
+from httpx import Response
+
+from ..utils import get_file
 
 
 @pytest.mark.asyncio
@@ -128,4 +132,36 @@ async def test_find_too_many_err(chat_app: App):
         )
         ctx.receive_event(bot, event_1)
         ctx.should_call_send(event_1, "查询类型<type>与对应参数<ids>数量不匹配", True)
+        ctx.should_finished()
+
+
+@pytest.mark.asyncio
+@respx.mock
+async def test_fetch_exact_err(chat_app: App):
+    from nonebot.adapters.onebot.v11.bot import Bot
+    from nonebot.adapters.onebot.v11.message import Message
+
+    from nonebot_plugin_penguin.user import query
+    from nonebot_plugin_penguin.config import plugin_config
+
+    from ..utils import fake_admin_user, fake_private_message_event
+
+    url1 = f"{plugin_config.penguin_widget}/result/CN/exact/main_00-01/2002"
+    url1_router = respx.get(url1)
+    url1_router.mock(Response(200, text=get_file("request/fake_fetch_error.html")))
+
+    async with chat_app.test_matcher(query) as ctx:
+        bot = ctx.create_bot(base=Bot)
+        event_1 = fake_private_message_event(
+            message=Message("penguin exact 0-1 初级作战记录"),
+            sender=fake_admin_user,
+        )
+        ctx.receive_event(bot, event_1)
+        ctx.should_call_send(
+            event_1,
+            "查询失败："
+            + "{'type': 'NotFound', "
+            + "'details': 'no records have been found with query params provided'}",
+            True,
+        )
         ctx.should_finished()

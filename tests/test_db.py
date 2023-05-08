@@ -42,7 +42,7 @@ async def test_db_update_and_query(app: App, tmpdir):
 
         assert not db.stages_map.all() and not db.items_map.all()
         await db.id_map_update()
-        assert len(db.stages_map.all()) == 6
+        assert len(db.stages_map.all()) == 9
         assert len(db.items_map.all()) == 4
         # last_update 应该是 2022-02-02 02:02:02的时间戳(UTC+0)
         assert db.db_check.all() == [{"last_update": 1643767322}]

@@ -37,7 +37,7 @@ def _gen_confirm_prompt(items: list, type_: str) -> str:
                         stage_type = "复刻"
                     case _:
                         stage_type = "首次"
-                prompt += f"  {idx}. {candidate['code']}▪{stage_type}\n"
+                prompt += f"  {idx}. {candidate['code']}·{stage_type}\n"
     return prompt
 
 

@@ -215,12 +215,7 @@ async def query_confirm_stage(event: Union[V11Event, V12Event], state: T_State):
     logger.debug("confirm stage done")
 
 
-async def _is_all_confirmed(state: T_State):
-    if state.get("wait_confirm_item", None) or state.get("wait_confirm_stage", None):
-        await query.finish("流程错误!")
-
-
-@query.handle([Depends(_is_all_confirmed)])
+@query.handle()
 async def post_to_penguin(event: Union[V11Event, V12Event], state: T_State):
     logger.debug(f"state: {state}")
 

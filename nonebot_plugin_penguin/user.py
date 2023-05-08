@@ -231,14 +231,14 @@ async def post_to_penguin(event: Union[V11Event, V12Event], state: T_State):
         logger.debug("is sub request")
         ids = []
         names = []
-        if item := state.get("comfirm_item", None):
-            logger.debug(f"has item: {item}")
-            ids.append(item["itemId"])
-            names.append(item["name"])
         if stage := state.get("comfirm_stage", None):
             logger.debug(f"has stage: {stage}")
             ids.append(stage["stageId"])
             names.append(stage["code"])
+        if item := state.get("comfirm_item", None):
+            logger.debug(f"has item: {item}")
+            ids.append(item["itemId"])
+            names.append(item["name"])
 
         logger.debug(f"ids: {ids}")
         logger.debug(f"names: {names}")

@@ -1117,20 +1117,24 @@ resolved_reference = "c513e58706345f56c83dd46ecf5f03c7b75a9be1"
 
 [[package]]
 name = "nonebug-saa"
-version = "0.1.0"
+version = "0.2.0"
 description = "A nonebug helper for nonebot-plugin-send-anything-anything"
 category = "dev"
 optional = false
-python-versions = ">=3.10,<4.0"
-files = [
-    {file = "nonebug_saa-0.1.0-py3-none-any.whl", hash = "sha256:f2e79867f81d53ca08752382e6800ebc8c6242fbee94fa346ef48e887121b9d6"},
-    {file = "nonebug_saa-0.1.0.tar.gz", hash = "sha256:bfe805d3a9d67e9e2585638b0f37185f69934d2bf433276c007850a9cb9ba52c"},
-]
+python-versions = "^3.10"
+files = []
+develop = false
 
 [package.dependencies]
-nonebot-plugin-send-anything-anywhere = ">=0.2.2,<0.3.0"
-nonebug = ">=0.3.1,<0.4.0"
-pytest-mock = ">=3.10.0,<4.0.0"
+nonebot-plugin-send-anything-anywhere = "^0.2.2"
+nonebug = "^0.3.1"
+pytest-mock = "^3.10.0"
+
+[package.source]
+type = "git"
+url = "https://github.com/felinae98/nonebug-saa.git"
+reference = "HEAD"
+resolved_reference = "e8a2b85b0ec7f37a530e9b17c89d2bb34354c12d"
 
 [[package]]
 name = "nonemoji"
@@ -1493,14 +1497,14 @@ dev = ["pre-commit", "pytest-asyncio", "tox"]
 
 [[package]]
 name = "pytest-xdist"
-version = "3.2.1"
+version = "3.3.0"
 description = "pytest xdist plugin for distributed testing, most importantly across multiple CPUs"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pytest-xdist-3.2.1.tar.gz", hash = "sha256:1849bd98d8b242b948e472db7478e090bf3361912a8fed87992ed94085f54727"},
-    {file = "pytest_xdist-3.2.1-py3-none-any.whl", hash = "sha256:37290d161638a20b672401deef1cba812d110ac27e35d213f091d15b8beb40c9"},
+    {file = "pytest-xdist-3.3.0.tar.gz", hash = "sha256:d42c9efb388da35480878ef4b2993704c6cea800c8bafbe85a8cdc461baf0748"},
+    {file = "pytest_xdist-3.3.0-py3-none-any.whl", hash = "sha256:76f7683d4f993eaff91c9cb0882de0465c4af9c6dd3debc903833484041edc1a"},
 ]
 
 [package.dependencies]
@@ -2158,4 +2162,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "685c2d94fb986706153ee867f63ff34284ff6f533e1e61f62b03b1f0e74101dd"
+content-hash = "887ad5bef03ad817ff2b4df39714e96e6fc44ed41a16fe5720b130990cb9c508"

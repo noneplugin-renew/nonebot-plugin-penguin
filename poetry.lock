@@ -1022,19 +1022,19 @@ nonebot2 = ">=2.0.0-beta.3,<3.0.0"
 
 [[package]]
 name = "nonebot-plugin-apscheduler"
-version = "0.2.0"
+version = "0.3.0"
 description = "APScheduler Support for NoneBot2"
 category = "main"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "nonebot-plugin-apscheduler-0.2.0.tar.gz", hash = "sha256:7b63e99a611b657533b48fcf1f8c6627c18c2eb3fa820a906cd4ec4666c0ceb0"},
-    {file = "nonebot_plugin_apscheduler-0.2.0-py3-none-any.whl", hash = "sha256:9285ee84ca1cfa4db73c86cedb5911bbbd25a21ec0cd5f22447cd12f89e48fb4"},
+    {file = "nonebot_plugin_apscheduler-0.3.0-py3-none-any.whl", hash = "sha256:ec5e0267293fc9803e543c6086d3e109ac87bf6dccea5473d219cad826238aae"},
+    {file = "nonebot_plugin_apscheduler-0.3.0.tar.gz", hash = "sha256:7c41cc1d49ea6af7c4518c72cd15f8c2f549071b8bc8bfc4b21fbdd0a4875cfd"},
 ]
 
 [package.dependencies]
 apscheduler = ">=3.7.0,<4.0.0"
-nonebot2 = ">=2.0.0-rc.1,<3.0.0"
+nonebot2 = ">=2.0.0,<3.0.0"
 
 [[package]]
 name = "nonebot-plugin-htmlrender"
@@ -2159,4 +2159,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "90b8e769bb2844943074d26021a03a68a03fd3e376debdc1e718ef06f8ea7933"
+content-hash = "c090f62f822bbfdcc3323b037df4b3b3426e03366c6b9bcca83ae2774929a731"

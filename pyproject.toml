@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nonebot-plugin-penguin"
-version = "0.0.4"
+version = "0.1.0"
 description = "get penguin data and send from https://penguin-stats.io/"
 authors = ["Azide <rukuy@qq.com>"]
 license = "MIT"

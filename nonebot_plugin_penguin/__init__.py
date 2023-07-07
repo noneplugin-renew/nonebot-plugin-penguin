@@ -30,7 +30,7 @@ __all__ = [
     "utils",
 ]
 
-__plugin_metadata__ = PluginMetadata(
+__plugin_meta__ = PluginMetadata(
     name="nonebot_plugin_penguin",
     description="使用nonebot2查询企鹅物流掉落物数据",
     usage="发送命令 `penguin -h` 查看帮助",

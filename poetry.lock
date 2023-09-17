@@ -1002,20 +1002,20 @@ nonebot2 = ">=2.0.0,<3.0.0"
 
 [[package]]
 name = "nonebot-plugin-htmlrender"
-version = "0.2.0.3"
+version = "0.2.2"
 description = "通过浏览器渲染图片"
 optional = false
-python-versions = ">=3.8,<4.0"
+python-versions = "<4.0,>=3.8"
 files = [
-    {file = "nonebot_plugin_htmlrender-0.2.0.3-py3-none-any.whl", hash = "sha256:2a45d811513bd03dfe6825f6229f50f1e65a390d4ae9c5413184d6de42147147"},
-    {file = "nonebot_plugin_htmlrender-0.2.0.3.tar.gz", hash = "sha256:d7e0432ebb78abbc7d934141902722d36334ef12921f640da4c90dedb62452fb"},
+    {file = "nonebot_plugin_htmlrender-0.2.2-py3-none-any.whl", hash = "sha256:0415d8123a3c1a8bc321762631e1bfa33611530122ad662b95a7a772c24a0725"},
+    {file = "nonebot_plugin_htmlrender-0.2.2.tar.gz", hash = "sha256:d79c4fa1c9bd655ac12caa4289da58d249f67ed45d29754565e05e4efbfa1e85"},
 ]
 
 [package.dependencies]
 aiofiles = ">=0.8.0"
 jinja2 = ">=3.0.3"
 markdown = ">=3.3.6"
-nonebot2 = ">=2.0.0-beta.1"
+nonebot2 = {version = ">=2.0.0", extras = ["fastapi"]}
 playwright = ">=1.17.2"
 Pygments = ">=2.10.0"
 pymdown-extensions = ">=9.1"

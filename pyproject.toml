@@ -22,7 +22,7 @@ classifiers = [
 python = "^3.10"
 tinydb = "^4.7.1"
 nonebot2 = { extras = ["fastapi"], version = "^2.0.0" }
-httpx = ">=0.23.3,<0.25.0"
+httpx = ">=0.23.3,<0.27.0"
 nonebot-plugin-htmlrender = "^0.2.0.3"
 nonebot-plugin-apscheduler = ">=0.2,<0.4"
 nonebot-plugin-send-anything-anywhere = "^0.2.2"

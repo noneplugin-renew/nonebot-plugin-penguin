@@ -30,7 +30,7 @@ nonebot-adapter-onebot = "^2.2.2"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.10.1"
-black = "^23.1.0"
+black = ">=23.1,<25.0"
 nonemoji = "^0.1.2"
 pre-commit = "^3.1.0"
 pytest = "^7.3.0"
